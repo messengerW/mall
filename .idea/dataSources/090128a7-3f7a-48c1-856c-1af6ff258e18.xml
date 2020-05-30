@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="docker_guli_pms">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="guli_pms">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="guli_admin"/>
+    <schema id="4" parent="1" name="guli_oms"/>
+    <schema id="5" parent="1" name="guli_sms"/>
+    <schema id="6" parent="1" name="guli_ums"/>
+    <schema id="7" parent="1" name="guli_wms"/>
+    <schema id="8" parent="1" name="information_schema"/>
+    <schema id="9" parent="1" name="mysql"/>
+    <schema id="10" parent="1" name="performance_schema"/>
+    <schema id="11" parent="1" name="sys"/>
+    <table id="12" parent="2" name="pms_attr">
+      <Comment>商品属性</Comment>
+    </table>
+    <table id="13" parent="2" name="pms_attr_attrgroup_relation">
+      <Comment>属性&amp;属性分组关联</Comment>
+    </table>
+    <table id="14" parent="2" name="pms_attr_group">
+      <Comment>属性分组</Comment>
+    </table>
+    <table id="15" parent="2" name="pms_brand">
+      <Comment>品牌</Comment>
+    </table>
+    <table id="16" parent="2" name="pms_category">
+      <Comment>商品三级分类</Comment>
+    </table>
+    <table id="17" parent="2" name="pms_category_brand_relation">
+      <Comment>品牌分类关联</Comment>
+    </table>
+    <table id="18" parent="2" name="pms_comment_replay">
+      <Comment>商品评价回复关系</Comment>
+    </table>
+    <table id="19" parent="2" name="pms_product_attr_value">
+      <Comment>spu属性值</Comment>
+    </table>
+    <table id="20" parent="2" name="pms_sku_images">
+      <Comment>sku图片</Comment>
+    </table>
+    <table id="21" parent="2" name="pms_sku_info">
+      <Comment>sku信息</Comment>
+    </table>
+    <table id="22" parent="2" name="pms_sku_sale_attr_value">
+      <Comment>sku销售属性&amp;值</Comment>
+    </table>
+    <table id="23" parent="2" name="pms_spu_comment">
+      <Comment>商品评价</Comment>
+    </table>
+    <table id="24" parent="2" name="pms_spu_images">
+      <Comment>spu图片</Comment>
+    </table>
+    <table id="25" parent="2" name="pms_spu_info">
+      <Comment>spu信息</Comment>
+    </table>
+    <table id="26" parent="2" name="pms_spu_info_desc">
+      <Comment>spu信息介绍</Comment>
+    </table>
+    <column id="27" parent="12" name="attr_id">
+      <Position>1</Position>
+      <Comment>属性id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="12" name="attr_name">
+      <Position>2</Position>
+      <Comment>属性名</Comment>
+      <DataType>char(30)|0</DataType>
+    </column>
+    <column id="29" parent="12" name="search_type">
+      <Position>3</Position>
+      <Comment>是否需要检索[0-不需要，1-需要]</Comment>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="30" parent="12" name="icon">
+      <Position>4</Position>
+      <Comment>属性图标</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="31" parent="12" name="value_select">
+      <Position>5</Position>
+      <Comment>可选值列表[用逗号分隔]</Comment>
+      <DataType>char(255)|0</DataType>
+    </column>
+    <column id="32" parent="12" name="attr_type">
+      <Position>6</Position>
+      <Comment>属性类型[0-销售属性，1-基本属性，2-既是销售属性又是基本属性]</Comment>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="33" parent="12" name="enable">
+      <Position>7</Position>
+      <Comment>启用状态[0 - 禁用，1 - 启用]</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="34" parent="12" name="catelog_id">
+      <Position>8</Position>
+      <Comment>所属分类</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="35" parent="12" name="show_desc">
+      <Position>9</Position>
+      <Comment>快速展示【是否展示在介绍上；0-否 1-是】，在sku中仍然可以调整</Comment>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <key id="36" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>attr_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="37" parent="13" name="id">
+      <Position>1</Position>
+      <Comment>id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="13" name="attr_id">
+      <Position>2</Position>
+      <Comment>属性id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="39" parent="13" name="attr_group_id">
+      <Position>3</Position>
+      <Comment>属性分组id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="40" parent="13" name="attr_sort">
+      <Position>4</Position>
+      <Comment>属性组内排序</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="41" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="42" parent="14" name="attr_group_id">
+      <Position>1</Position>
+      <Comment>分组id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="43" parent="14" name="attr_group_name">
+      <Position>2</Position>
+      <Comment>组名</Comment>
+      <DataType>char(20)|0</DataType>
+    </column>
+    <column id="44" parent="14" name="sort">
+      <Position>3</Position>
+      <Comment>排序</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="45" parent="14" name="descript">
+      <Position>4</Position>
+      <Comment>描述</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="46" parent="14" name="icon">
+      <Position>5</Position>
+      <Comment>组图标</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="47" parent="14" name="catelog_id">
+      <Position>6</Position>
+      <Comment>所属分类id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <key id="48" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>attr_group_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="49" parent="15" name="brand_id">
+      <Position>1</Position>
+      <Comment>品牌id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="50" parent="15" name="name">
+      <Position>2</Position>
+      <Comment>品牌名</Comment>
+      <DataType>char(50)|0</DataType>
+    </column>
+    <column id="51" parent="15" name="logo">
+      <Position>3</Position>
+      <Comment>品牌logo地址</Comment>
+      <DataType>varchar(2000)|0</DataType>
+    </column>
+    <column id="52" parent="15" name="descript">
+      <Position>4</Position>
+      <Comment>介绍</Comment>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="53" parent="15" name="show_status">
+      <Position>5</Position>
+      <Comment>显示状态[0-不显示；1-显示]</Comment>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="54" parent="15" name="first_letter">
+      <Position>6</Position>
+      <Comment>检索首字母</Comment>
+      <DataType>char(1)|0</DataType>
+    </column>
+    <column id="55" parent="15" name="sort">
+      <Position>7</Position>
+      <Comment>排序</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="56" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>brand_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="57" parent="16" name="cat_id">
+      <Position>1</Position>
+      <Comment>分类id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="58" parent="16" name="name">
+      <Position>2</Position>
+      <Comment>分类名称</Comment>
+      <DataType>char(50)|0</DataType>
+    </column>
+    <column id="59" parent="16" name="parent_cid">
+      <Position>3</Position>
+      <Comment>父分类id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="60" parent="16" name="cat_level">
+      <Position>4</Position>
+      <Comment>层级</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="61" parent="16" name="show_status">
+      <Position>5</Position>
+      <Comment>是否显示[0-不显示，1显示]</Comment>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="62" parent="16" name="sort">
+      <Position>6</Position>
+      <Comment>排序</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="63" parent="16" name="icon">
+      <Position>7</Position>
+      <Comment>图标地址</Comment>
+      <DataType>char(255)|0</DataType>
+    </column>
+    <column id="64" parent="16" name="product_unit">
+      <Position>8</Position>
+      <Comment>计量单位</Comment>
+      <DataType>char(50)|0</DataType>
+    </column>
+    <column id="65" parent="16" name="product_count">
+      <Position>9</Position>
+      <Comment>商品数量</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="66" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>cat_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="67" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="68" parent="17" name="brand_id">
+      <Position>2</Position>
+      <Comment>品牌id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="69" parent="17" name="catelog_id">
+      <Position>3</Position>
+      <Comment>分类id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="70" parent="17" name="brand_name">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="71" parent="17" name="catelog_name">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="72" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="73" parent="18" name="id">
+      <Position>1</Position>
+      <Comment>id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="74" parent="18" name="comment_id">
+      <Position>2</Position>
+      <Comment>评论id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="75" parent="18" name="reply_id">
+      <Position>3</Position>
+      <Comment>回复id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <key id="76" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="77" parent="19" name="id">
+      <Position>1</Position>
+      <Comment>id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="78" parent="19" name="spu_id">
+      <Position>2</Position>
+      <Comment>商品id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="79" parent="19" name="attr_id">
+      <Position>3</Position>
+      <Comment>属性id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="80" parent="19" name="attr_name">
+      <Position>4</Position>
+      <Comment>属性名</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="81" parent="19" name="attr_value">
+      <Position>5</Position>
+      <Comment>属性值</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="82" parent="19" name="attr_sort">
+      <Position>6</Position>
+      <Comment>顺序</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="83" parent="19" name="quick_show">
+      <Position>7</Position>
+      <Comment>快速展示【是否展示在介绍上；0-否 1-是】</Comment>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <key id="84" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="85" parent="20" name="id">
+      <Position>1</Position>
+      <Comment>id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="86" parent="20" name="sku_id">
+      <Position>2</Position>
+      <Comment>sku_id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="87" parent="20" name="img_url">
+      <Position>3</Position>
+      <Comment>图片地址</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="88" parent="20" name="img_sort">
+      <Position>4</Position>
+      <Comment>排序</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="89" parent="20" name="default_img">
+      <Position>5</Position>
+      <Comment>默认图[0 - 不是默认图，1 - 是默认图]</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="90" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="91" parent="21" name="sku_id">
+      <Position>1</Position>
+      <Comment>skuId</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="92" parent="21" name="spu_id">
+      <Position>2</Position>
+      <Comment>spuId</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="93" parent="21" name="sku_name">
+      <Position>3</Position>
+      <Comment>sku名称</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="94" parent="21" name="sku_desc">
+      <Position>4</Position>
+      <Comment>sku介绍描述</Comment>
+      <DataType>varchar(2000)|0</DataType>
+    </column>
+    <column id="95" parent="21" name="catalog_id">
+      <Position>5</Position>
+      <Comment>所属分类id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="96" parent="21" name="brand_id">
+      <Position>6</Position>
+      <Comment>品牌id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="97" parent="21" name="sku_default_img">
+      <Position>7</Position>
+      <Comment>默认图片</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="98" parent="21" name="sku_title">
+      <Position>8</Position>
+      <Comment>标题</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="99" parent="21" name="sku_subtitle">
+      <Position>9</Position>
+      <Comment>副标题</Comment>
+      <DataType>varchar(2000)|0</DataType>
+    </column>
+    <column id="100" parent="21" name="price">
+      <Position>10</Position>
+      <Comment>价格</Comment>
+      <DataType>decimal(18,4)|0</DataType>
+    </column>
+    <column id="101" parent="21" name="sale_count">
+      <Position>11</Position>
+      <Comment>销量</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <key id="102" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>sku_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="103" parent="22" name="id">
+      <Position>1</Position>
+      <Comment>id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="104" parent="22" name="sku_id">
+      <Position>2</Position>
+      <Comment>sku_id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="105" parent="22" name="attr_id">
+      <Position>3</Position>
+      <Comment>attr_id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="106" parent="22" name="attr_name">
+      <Position>4</Position>
+      <Comment>销售属性名</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="107" parent="22" name="attr_value">
+      <Position>5</Position>
+      <Comment>销售属性值</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="108" parent="22" name="attr_sort">
+      <Position>6</Position>
+      <Comment>顺序</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="109" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="110" parent="23" name="id">
+      <Position>1</Position>
+      <Comment>id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="111" parent="23" name="sku_id">
+      <Position>2</Position>
+      <Comment>sku_id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="112" parent="23" name="spu_id">
+      <Position>3</Position>
+      <Comment>spu_id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="113" parent="23" name="spu_name">
+      <Position>4</Position>
+      <Comment>商品名字</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="114" parent="23" name="member_nick_name">
+      <Position>5</Position>
+      <Comment>会员昵称</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="115" parent="23" name="star">
+      <Position>6</Position>
+      <Comment>星级</Comment>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="116" parent="23" name="member_ip">
+      <Position>7</Position>
+      <Comment>会员ip</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="117" parent="23" name="create_time">
+      <Position>8</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="118" parent="23" name="show_status">
+      <Position>9</Position>
+      <Comment>显示状态[0-不显示，1-显示]</Comment>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="119" parent="23" name="spu_attributes">
+      <Position>10</Position>
+      <Comment>购买时属性组合</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="120" parent="23" name="likes_count">
+      <Position>11</Position>
+      <Comment>点赞数</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="121" parent="23" name="reply_count">
+      <Position>12</Position>
+      <Comment>回复数</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="122" parent="23" name="resources">
+      <Position>13</Position>
+      <Comment>评论图片/视频[json数据；[{type:文件类型,url:资源路径}]]</Comment>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <column id="123" parent="23" name="content">
+      <Position>14</Position>
+      <Comment>内容</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="124" parent="23" name="member_icon">
+      <Position>15</Position>
+      <Comment>用户头像</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="125" parent="23" name="comment_type">
+      <Position>16</Position>
+      <Comment>评论类型[0 - 对商品的直接评论，1 - 对评论的回复]</Comment>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <key id="126" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="127" parent="24" name="id">
+      <Position>1</Position>
+      <Comment>id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="128" parent="24" name="spu_id">
+      <Position>2</Position>
+      <Comment>spu_id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="129" parent="24" name="img_name">
+      <Position>3</Position>
+      <Comment>图片名</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="130" parent="24" name="img_url">
+      <Position>4</Position>
+      <Comment>图片地址</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="131" parent="24" name="img_sort">
+      <Position>5</Position>
+      <Comment>顺序</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="132" parent="24" name="default_img">
+      <Position>6</Position>
+      <Comment>是否默认图</Comment>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <key id="133" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="134" parent="25" name="id">
+      <Position>1</Position>
+      <Comment>商品id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="135" parent="25" name="spu_name">
+      <Position>2</Position>
+      <Comment>商品名称</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="136" parent="25" name="spu_description">
+      <Position>3</Position>
+      <Comment>商品描述</Comment>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <column id="137" parent="25" name="catalog_id">
+      <Position>4</Position>
+      <Comment>所属分类id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="138" parent="25" name="brand_id">
+      <Position>5</Position>
+      <Comment>品牌id</Comment>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="139" parent="25" name="weight">
+      <Position>6</Position>
+      <DataType>decimal(18,4)|0</DataType>
+    </column>
+    <column id="140" parent="25" name="publish_status">
+      <Position>7</Position>
+      <Comment>上架状态[0 - 下架，1 - 上架]</Comment>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="141" parent="25" name="create_time">
+      <Position>8</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="142" parent="25" name="update_time">
+      <Position>9</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="143" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="144" parent="26" name="spu_id">
+      <Position>1</Position>
+      <Comment>商品id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="145" parent="26" name="decript">
+      <Position>2</Position>
+      <Comment>商品介绍</Comment>
+      <DataType>longtext|0</DataType>
+    </column>
+    <key id="146" parent="26" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>spu_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
