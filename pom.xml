@@ -18,5 +18,6 @@
 		<module>mall-ware</module>
         <module>web-admin</module>
 		<module>renren-generator</module>
-	</modules>
+        <module>mall-common</module>
+    </modules>
 </project>

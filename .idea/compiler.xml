@@ -7,17 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="mall-coupon" />
-        <module name="mall-member" />
-        <module name="mall-order" />
-        <module name="mall-product" />
-        <module name="mall-ware" />
         <module name="renren-fast" />
         <module name="renren-generator" />
+        <module name="mall-common" />
+        <module name="mall-coupon" />
+        <module name="mall-product" />
+        <module name="mall-member" />
+        <module name="mall-ware" />
+        <module name="mall-order" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mall" target="1.8" />
+      <module name="mall-common" target="1.8" />
       <module name="mall-coupon" target="1.8" />
       <module name="mall-member" target="1.8" />
       <module name="mall-order" target="1.8" />

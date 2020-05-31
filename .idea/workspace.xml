@@ -40,60 +40,96 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a57d51bf-21b7-4777-9548-785e43289b5c" name="Default" comment="update idea2020" />
+    <list default="true" id="a57d51bf-21b7-4777-9548-785e43289b5c" name="Default" comment="generator">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_3_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_annotation_3_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_boot_starter_3_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_core_3_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_extension_3_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_4_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_11_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_11_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_5_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_2_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_26.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_1_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_1_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_1_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_1_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_3_0_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_1_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_1_8_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_1_8_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_1_8_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_1_8_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_1_8_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_1_8_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_1_8_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_2_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_1_8_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_2_6_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-common/mall-common.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-common/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-common/src/main/java/com/mall/common/utils/Constant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-common/src/main/java/com/mall/common/utils/PageUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-common/src/main/java/com/mall/common/utils/Query.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-common/src/main/java/com/mall/common/utils/R.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-common/src/main/java/com/mall/common/xss/HTMLFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-common/src/main/java/com/mall/common/xss/SQLFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-common/src/main/java/com/mall/common/xss/XssFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-common/src/main/java/com/mall/common/xss/XssHttpServletRequestWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/AttrAttrgroupRelationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/AttrController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/AttrGroupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/BrandController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/CategoryBrandRelationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/CategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/CommentReplayController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/ProductAttrValueController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/SkuImagesController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/SkuInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/SkuSaleAttrValueController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/SpuCommentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/SpuImagesController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/SpuInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller/SpuInfoDescController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren-generator/src/main/java/io/renren/RenrenApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/renren-generator/src/main/java/io/renren/RenrenGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren-generator/src/main/resources/template/Controller.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/renren-generator/src/main/resources/template/Controller.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren-generator/src/test/java/io/renren/RenrenApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/renren-generator/src/test/java/io/renren/RenrenGeneratorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren-generator/target/classes/template/Controller.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/renren-generator/target/classes/template/Controller.java.vm" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_TABLE_DETAILS" value="true" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="docker_guli_pms" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="docker_guli_pms" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="guli_pms" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="docker_guli_admin" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-11" />
+    <option name="y" value="-11" />
+    <option name="width" value="1942" />
+    <option name="height" value="1042" />
+  </component>
   <component name="ProjectId" id="1ccc1N9ffO20KFOVDccHBewquKT" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -108,14 +144,20 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mall-product/src/main/java/com/mall/product/controller" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.mall.common.utils" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IntelliJ IDEA 2020.1.1\workspace\mall\mall-product\src\main\java\com\mall\product\controller" />
+      <recent name="E:\IntelliJ IDEA 2020.1.1\workspace\mall\mall-common\src\main\java\com\mall\common\xss" />
+      <recent name="E:\IntelliJ IDEA 2020.1.1\workspace\mall\mall-common\src\main\java\com\mall\common\utils" />
       <recent name="D:\IntelliJIDEA\workspace\mall" />
     </key>
   </component>
@@ -126,7 +168,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.RenrenApplication">
+  <component name="RunManager" selected="Application.RenrenGenerator">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -141,8 +183,8 @@
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
     </configuration>
-    <configuration name="RenrenApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="io.renren.RenrenApplication" />
+    <configuration name="RenrenGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.renren.RenrenGenerator" />
       <module name="renren-generator" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -253,6 +295,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RenrenGenerator" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="renren-generator" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="io.renren.RenrenGenerator" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -272,17 +321,18 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.RenrenApplication" />
+      <item itemvalue="Application.RenrenGenerator" />
       <item itemvalue="Spring Boot.MallCouponApplication" />
       <item itemvalue="Spring Boot.MallMemberApplication" />
       <item itemvalue="Spring Boot.MallOrderApplication" />
       <item itemvalue="Spring Boot.MallProductApplication" />
       <item itemvalue="Spring Boot.MallWareApplication" />
       <item itemvalue="Spring Boot.RenrenApplication" />
+      <item itemvalue="Spring Boot.RenrenGenerator" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.RenrenApplication" />
+        <item itemvalue="Application.RenrenGenerator" />
       </list>
     </recent_temporary>
   </component>
@@ -298,7 +348,6 @@
         <entry key="1">
           <value>
             <State>
-              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
@@ -327,16 +376,12 @@
         </entry>
       </map>
     </option>
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="1" value="TOOL_WINDOW" />
-      </map>
-    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update idea2020" />
-    <option name="LAST_COMMIT_MESSAGE" value="update idea2020" />
+    <MESSAGE value="generator" />
+    <option name="LAST_COMMIT_MESSAGE" value="generator" />
   </component>
   <component name="WindowStateProjectService">
     <state x="526" y="205" key="#Notifications" timestamp="1590832754791">
@@ -347,50 +392,66 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1590832544081" />
-    <state x="244" y="0" key="CommitChangelistDialog2" timestamp="1590831942113">
+    <state x="419" y="207" width="443" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1590910679341">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="244" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590831942113" />
-    <state width="845" height="163" key="GridCell.Tab.0.bottom" timestamp="1590833105105">
+    <state x="419" y="207" width="443" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1590910679341" />
+    <state x="342" y="86" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590911413698">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="845" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1590833105105" />
-    <state width="845" height="163" key="GridCell.Tab.0.center" timestamp="1590833105105">
+    <state x="342" y="86" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1590911413698" />
+    <state x="244" y="0" key="CommitChangelistDialog2" timestamp="1590833336174">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="845" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1590833105105" />
-    <state width="845" height="163" key="GridCell.Tab.0.left" timestamp="1590833105105">
+    <state x="244" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1590833336174" />
+    <state width="922" height="163" key="GridCell.Tab.0.bottom" timestamp="1590911432283">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="845" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1590833105105" />
-    <state width="845" height="163" key="GridCell.Tab.0.right" timestamp="1590833105105">
+    <state width="922" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1590911432283" />
+    <state width="922" height="163" key="GridCell.Tab.0.center" timestamp="1590911432283">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="845" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1590833105105" />
-    <state width="845" height="163" key="GridCell.Tab.1.bottom" timestamp="1590833105106">
+    <state width="922" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1590911432283" />
+    <state width="922" height="163" key="GridCell.Tab.0.left" timestamp="1590911432283">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="845" height="163" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1590833105106" />
-    <state width="845" height="163" key="GridCell.Tab.1.center" timestamp="1590833105105">
+    <state width="922" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1590911432283" />
+    <state width="922" height="163" key="GridCell.Tab.0.right" timestamp="1590911432283">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="845" height="163" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1590833105105" />
-    <state width="845" height="163" key="GridCell.Tab.1.left" timestamp="1590833105105">
+    <state width="922" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1590911432283" />
+    <state width="922" height="163" key="GridCell.Tab.1.bottom" timestamp="1590911432283">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="845" height="163" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1590833105105" />
-    <state width="845" height="163" key="GridCell.Tab.1.right" timestamp="1590833105105">
+    <state width="922" height="163" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1590911432283" />
+    <state width="922" height="163" key="GridCell.Tab.1.center" timestamp="1590911432283">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="845" height="163" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1590833105105" />
-    <state x="81" y="0" key="SettingsEditor" timestamp="1590833217588">
+    <state width="922" height="163" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1590911432283" />
+    <state width="922" height="163" key="GridCell.Tab.1.left" timestamp="1590911432283">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="81" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1590833217588" />
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1590831946070">
+    <state width="922" height="163" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1590911432283" />
+    <state width="922" height="163" key="GridCell.Tab.1.right" timestamp="1590911432283">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1590831946070" />
+    <state width="922" height="163" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1590911432283" />
+    <state x="163" y="0" key="SettingsEditor" timestamp="1590909617794">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="163" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1590909617793" />
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2" timestamp="1590833355732">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="73" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1590833355732" />
+    <state x="439" y="118" key="chooseDestDirectoryDialog" timestamp="1590910674149">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="439" y="118" key="chooseDestDirectoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1590910674149" />
+    <state x="56" y="1" key="new project wizard" timestamp="1590909246999">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="56" y="1" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1590909246999" />
     <state x="303" y="1" key="search.everywhere.popup" timestamp="1590832439853">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
