@@ -1,5 +1,5 @@
 server:
-  port: 9000
+  port: 53000
 
 spring:
   datasource:
@@ -7,6 +7,13 @@ spring:
     password: 232624
     url: jdbc:mysql://centos:3308/guli_oms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  application:
+    name: mall-order
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
