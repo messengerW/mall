@@ -1,0 +1,10 @@
+server:
+  port: 50000
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: echoone:8848
+  application:
+    name: mall-gateway
