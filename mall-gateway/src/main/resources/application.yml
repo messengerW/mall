@@ -1,10 +1,23 @@
 server:
-  port: 50000
+  port: 51000
 
 spring:
   cloud:
     nacos:
       discovery:
         server-addr: echoone:8848
+    # 配置网关路由
+    gateway:
+      routes:
+        - id: baidu_route
+          uri: https://www.baidu.com
+          predicates:
+            - Query=url,baidu
+
+        - id: qq_route
+          uri: https://www.qq.com
+          predicates:
+            - Query=url,qq
+
   application:
     name: mall-gateway
