@@ -19,5 +19,12 @@ spring:
           predicates:
             - Query=url,qq
 
+        - id: admin_route
+          uri: lb://web-admin
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/web-admin/$\{segment}
+
   application:
     name: mall-gateway

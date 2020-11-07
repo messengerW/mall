@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -38,14 +41,42 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
          * @Function: 1.查出所有分类
          *            2.组装成父子的树形结构
          * @param
-        */
+         */
 
-        // 查询
+        // 查询出所有分类
         List<CategoryEntity> entities = baseMapper.selectList(null);
 
-        // 组装
+        // 组装成树形结构（父分类-子分类）
+        // java-8 流式编程（当然，，可以采用遍历列表地方式）
+        // 找到所有的一级分类（parent_cid = 0）
+        List<CategoryEntity> level1Menus = entities.stream().filter(categoryEntity ->
+                categoryEntity.getParentCid() == 0
+        ).map((menu) -> {
+            menu.setChildren(getChildren(menu, entities));
+            return menu;
+        }).sorted((menu1, menu2) -> {
+            return (menu1.getSort() == null ? 0 : menu1.getSort()) -
+                    (menu2.getSort() == null ? 0 : menu2.getSort());
+        }).collect(Collectors.toList());
 
-        return entities;
+        return level1Menus;
+    }
+
+    // 递归查找所有菜单的子菜单
+    private List<CategoryEntity> getChildren(CategoryEntity root, List<CategoryEntity> all) {
+        List<CategoryEntity> children = all.stream().filter(categoryEntity -> {
+            return categoryEntity.getParentCid().equals(root.getCatId());
+        }).map(categoryEntity -> {
+            // 递归寻找子菜单
+            categoryEntity.setChildren(getChildren(categoryEntity, all));
+            return categoryEntity;
+        }).sorted((menu1, menu2) -> {
+            // 排序
+            return (menu1.getSort() == null ? 0 : menu1.getSort()) -
+                    (menu2.getSort() == null ? 0 : menu2.getSort());
+        }).collect(Collectors.toList());
+
+        return children;
     }
 
 }

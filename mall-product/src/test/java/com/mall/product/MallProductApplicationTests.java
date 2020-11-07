@@ -18,11 +18,11 @@ public class MallProductApplicationTests {
 	@Test
     public void contextLoads() {
 
-//		BrandEntity entity = new BrandEntity();
-//
-//		entity.setName("Huawei");
-//		brandService.save(entity);
-//		System.out.println("============Insert Successfully!============");
+		BrandEntity entity = new BrandEntity();
+
+		entity.setName("Huawei");
+		brandService.save(entity);
+		System.out.println("============Insert Successfully!============");
 	}
 
 }
