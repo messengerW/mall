@@ -2,6 +2,9 @@ server:
   port: 51000
 
 spring:
+  application:
+    name: mall-gateway
+
   cloud:
     nacos:
       discovery:
@@ -19,6 +22,13 @@ spring:
           predicates:
             - Query=url,qq
 
+        - id: product_route
+          uri: lb://mall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
         - id: admin_route
           uri: lb://web-admin
           predicates:
@@ -26,5 +36,6 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*),/web-admin/$\{segment}
 
-  application:
-    name: mall-gateway
+
+##admin_route:
+# http://localhost:51000/api/captcha.jps => http://localhost:8080/web-admin/captcha.jpg

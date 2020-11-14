@@ -75,10 +75,14 @@ public class CategoryController {
 
     /**
      * 删除
+     * @RequestBody: 获取请求体，必须发送POST请求，SpringMVC自动将json格式的数据转为相应对象
      */
     @RequestMapping("/delete")
     public R delete(@RequestBody Long[] catIds){
-		categoryService.removeByIds(Arrays.asList(catIds));
+        // 物理删除（删除表中记录）
+//		categoryService.removeByIds(Arrays.asList(catIds));
+        // 逻辑删除（保留表中记录，只是修改控制否展示的showStatus属性字段）
+		categoryService.removeMenuByIds(Arrays.asList(catIds));
 
         return R.ok();
     }
