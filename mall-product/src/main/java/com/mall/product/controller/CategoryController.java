@@ -74,7 +74,17 @@ public class CategoryController {
     }
 
     /**
-     * 删除
+     * 批量修改（菜单拖拽效果）
+    * */
+    @RequestMapping("/update/sort")
+    //@RequiresPermissions("product:category:update")
+    public R updateSort(@RequestBody CategoryEntity[] category){
+        categoryService.updateBatchById(Arrays.asList(category));
+        return R.ok();
+    }
+
+    /**
+     * （批量）删除
      * @RequestBody: 获取请求体，必须发送POST请求，SpringMVC自动将json格式的数据转为相应对象
      */
     @RequestMapping("/delete")
