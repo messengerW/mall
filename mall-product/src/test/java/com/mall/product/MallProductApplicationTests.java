@@ -1,8 +1,5 @@
 package com.mall.product;
 
-import com.aliyun.oss.OSS;
-import com.aliyun.oss.OSSClient;
-import com.aliyun.oss.OSSClientBuilder;
 import com.mall.product.entity.BrandEntity;
 import com.mall.product.service.BrandService;
 import org.junit.Test;
@@ -21,9 +18,6 @@ public class MallProductApplicationTests {
 
     @Autowired
     BrandService brandService;
-    // 方法一：引入 oss 依赖
-    @Autowired
-    OSSClient ossClient;
 
     @Test
     public void contextLoads() {
@@ -54,12 +48,12 @@ public class MallProductApplicationTests {
 //        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
 
         // 上传文件流。
-        InputStream inputStream = new FileInputStream("E:\\QQ\\File\\347888930\\FileRecv\\MobileFile\\wechat005.png");
-        ossClient.putObject("msw-mall", "exam1.png", inputStream);
+//        InputStream inputStream = new FileInputStream("E:\\QQ\\File\\347888930\\FileRecv\\MobileFile\\wechat005.png");
+//        ossClient.putObject("msw-mall", "exam1.png", inputStream);
 
         // 关闭OSSClient。
-        ossClient.shutdown();
-        System.out.println("上传成功...");
+//        ossClient.shutdown();
+//        System.out.println("上传成功...");
     }
 
 }

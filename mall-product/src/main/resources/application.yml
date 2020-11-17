@@ -12,11 +12,6 @@ spring:
     nacos:
       discovery:
         server-addr: echoone:8848
-    alicloud:
-      access-key: LTAI4G6MJHukz2549aDCMy1J
-      secret-key: bThPe7wGCoeRVnCKCRDR7sqpibt1n4
-      oss:
-        endpoint: oss-cn-beijing.aliyuncs.com
   application:
     name: mall-product
 
