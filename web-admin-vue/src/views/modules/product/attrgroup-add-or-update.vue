@@ -75,7 +75,7 @@ export default {
     };
   },
   components:{CategoryCascader},
-  
+
   methods: {
     dialogClose(){
       this.catelogPath = [];
@@ -85,7 +85,7 @@ export default {
         url: this.$http.adornUrl("/product/category/list/tree"),
         method: "get"
       }).then(({ data }) => {
-        this.categorys = data.data;
+        this.categorys = data.page;
       });
     },
     init(id) {
