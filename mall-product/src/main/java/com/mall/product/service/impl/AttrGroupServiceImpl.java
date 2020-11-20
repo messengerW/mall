@@ -31,22 +31,23 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
 
     @Override
     public PageUtils queryPage(Map<String, Object> params, Long catelogId) {
-//        log.debug(catelogId.toString());
+        // select * from pms_attr_group where catelog_id = ? and (attr_group_id = key OR attr_group_name like `%key%`);
+        String key = (String) params.get("key");
+        QueryWrapper<AttrGroupEntity> wrapper = new QueryWrapper<AttrGroupEntity>();
+        if (!StringUtils.isEmpty(key)) {
+            // 如果 key 不为空，则继续组装查询条件
+            wrapper.and((obj) -> {
+                obj.eq("attr_group_id", key).or().like("attr_group_name", key);
+            });
+        }
         if (catelogId == 0) {
-            IPage<AttrGroupEntity> page = this.page(new Query<AttrGroupEntity>().getPage(params), new QueryWrapper<AttrGroupEntity>());
+            IPage<AttrGroupEntity> page = this.page(new Query<AttrGroupEntity>().getPage(params),
+                    wrapper);
             return new PageUtils(page);
         } else {
-            // select * from pms_attr_group where catelog_id = ? and (attr_group_id = key OR attr_group_name like `%key%`);
-            String key = (String) params.get("key");
-//            log.debug(key);
-            QueryWrapper<AttrGroupEntity> wrapper = new QueryWrapper<AttrGroupEntity>().eq("catelog_id", catelogId);
-            if (!StringUtils.isEmpty(key)) {
-                // 如果 key 不为空，则继续组装查询条件
-                wrapper.and((obj) -> {
-                    obj.eq("attr_group_id", key).or().like("attr_group_name", key);
-                });
-            }
-            IPage<AttrGroupEntity> page = this.page(new Query<AttrGroupEntity>().getPage(params), wrapper);
+            wrapper.eq("catelog_id", catelogId);
+            IPage<AttrGroupEntity> page = this.page(new Query<AttrGroupEntity>().getPage(params),
+                    wrapper);
             return new PageUtils(page);
         }
     }
