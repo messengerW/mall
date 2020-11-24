@@ -51,7 +51,7 @@ export default {
           catId: this.catId
         })
       }).then(({ data }) => {
-        this.brands = data.page;
+        this.brands = data.data;
       });
     }
   },
