@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: mall-search
+  cloud:
+    nacos:
+      discovery:
+        server-addr: echoone:8848
+    sentinel:
+      transport:
+        dashboard: echoone:8333
+  thymeleaf:
+    cache: false
+  session:
+    store-type: redis
+  redis:
+    host: echoone
+server:
+  port: 40000

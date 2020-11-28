@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: mall-seckill
+
+server:
+  port: 41000

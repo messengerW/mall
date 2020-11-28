@@ -23,6 +23,10 @@
         <module>mall-order</module>
         <!--产品服务-->
         <module>mall-product</module>
+        <!--ES搜索服务-->
+        <module>mall-search</module>
+        <!--第三方服务-->
+        <module>mall-third</module>
         <!--交易服务-->
         <module>mall-ware</module>
         <!--后台管理员系统-->

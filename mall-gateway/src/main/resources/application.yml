@@ -30,6 +30,13 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*),/$\{segment}
 
+        - id: coupon_route
+          uri: lb://mall-coupon
+          predicates:
+            - Path=/api/coupon/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
+
         # third - 第三方服务
         - id: third_route
           uri: lb://mall-third
@@ -62,6 +69,41 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*),/web-admin/$\{segment}
 
+        - id: search_route
+          uri: lb://mall-search
+          predicates:
+            - Host=search.glmall.com
+
+        - id: auth_route
+          uri: lb://mall-auth-server
+          predicates:
+            - Host=auth.glmall.com
+
+        - id: seckill_route
+          uri: lb://mall-seckill
+          predicates:
+            - Host=seckill.glmall.com
+
+        - id: cart_route
+          uri: lb://mall-cart
+          predicates:
+            - Host=cart.glmall.com
+
+        - id: member_route
+          uri: lb://mall-member
+          predicates:
+            - Host=member.glmall.com
+
+        - id: order_route
+          uri: lb://mall-order
+          predicates:
+            - Host=order.glmall.com
+
+        # 任何以mall.com结尾的域名转发到mall-product
+        - id: mall_route
+          uri: lb://mall-product
+          predicates:
+            - Host=**.glmall.com,glmall.com,item.glmall.com
 
 ##admin_route:
 # http://localhost:51000/api/captcha.jps => http://localhost:8080/web-admin/captcha.jpg

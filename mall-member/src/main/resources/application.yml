@@ -14,6 +14,16 @@ spring:
         server-addr: echoone:8848
   application:
     name: mall-member
+  thymeleaf:
+    cache: false
+  session:
+    store-type: redis
+  redis:
+    host: echoone
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml

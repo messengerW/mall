@@ -34,5 +34,8 @@ public class AttrGroupWithAttrsVO {
      */
     private Long catelogId;
 
-    private List<AttrEntity> attrs;
+	/**
+	 * 保存整个实体信息
+	 */
+	private List<AttrEntity> attrs;
 }
