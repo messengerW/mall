@@ -14,3 +14,8 @@ spring:
 
 server:
   port: 43000
+
+logging:
+  level:
+    com.mall.third: debug
+    com.alibaba.nacos.client.naming: warn

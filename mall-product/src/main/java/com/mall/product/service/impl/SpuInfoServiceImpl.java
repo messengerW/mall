@@ -335,8 +335,9 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             // 远程调用失败 TODO 接口幂等性 重试机制
             /**
              * Feign 的调用流程  Feign有自动重试机制
-             * 1. 发送请求执行
-             * 2.
+             * 1. 构造请求数据，将对象转为json
+             * 2. 发送请求进行执行
+             * 3. 执行请求会有重试机制
              */
         }
     }

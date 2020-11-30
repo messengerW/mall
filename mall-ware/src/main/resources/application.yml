@@ -27,3 +27,4 @@ mybatis-plus:
 logging:
   level:
     com.mall.ware: debug
+    com.alibaba.nacos.client.naming: warn

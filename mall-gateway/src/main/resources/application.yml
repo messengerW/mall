@@ -107,3 +107,8 @@ spring:
 
 ##admin_route:
 # http://localhost:51000/api/captcha.jps => http://localhost:8080/web-admin/captcha.jpg
+
+logging:
+  level:
+    com.mall.gateway: debug
+    com.alibaba.nacos.client.naming: warn
