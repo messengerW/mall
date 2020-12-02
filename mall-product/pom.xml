@@ -52,6 +52,13 @@
 <!--			<artifactId>aliyun-sdk-oss</artifactId>-->
 <!--			<version>3.10.2</version>-->
 <!--		</dependency>-->
+
+		<!-- thymeleaf -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
