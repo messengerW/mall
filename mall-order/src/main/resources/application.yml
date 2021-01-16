@@ -1,11 +1,11 @@
 server:
-  port: 50003
+  port: 53000
 
 spring:
   datasource:
     username: root
     password: 232624
-    url: jdbc:mysql://echoone:3308/mall_oms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://echoone:3308/guli_oms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   cloud:

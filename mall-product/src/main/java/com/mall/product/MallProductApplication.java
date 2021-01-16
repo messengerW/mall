@@ -48,6 +48,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  *   1. application.xml 配置文件中关闭缓存
  *   2. 所有的静态资源都放在 static 目录下
  *   3. index页面放在 templates 目录下（SpringBoot访问时会默认寻找 index.html）
+ *   4. 实现热加载（修改页面不用重启服务就可以实时更新）
+ *      1）引入 dev-tools
+ *      2）修改完后，Build -> ReCompile (快捷键 ctrl+shift+F9)，再刷新页面
  * */
 @EnableFeignClients(basePackages = "com.mall.product.feign")
 @MapperScan("com.mall.product.dao")

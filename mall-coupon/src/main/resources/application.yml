@@ -5,7 +5,7 @@ spring:
   datasource:
     username: root
     password: 232624
-    url: jdbc:mysql://echoone:3308/mall_sms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://echoone:3308/guli_sms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   cloud:
