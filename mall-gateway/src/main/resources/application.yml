@@ -103,7 +103,7 @@ spring:
         - id: mall_route
           uri: lb://mall-product
           predicates:
-            - Host=**.glmall.com,glmall.com,item.glmall.com
+            - Host=**.echoone.cn,echoone.cn
 
 ##admin_route:
 # http://localhost:51000/api/captcha.jps => http://localhost:8080/web-admin/captcha.jpg
