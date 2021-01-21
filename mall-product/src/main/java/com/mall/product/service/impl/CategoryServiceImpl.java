@@ -97,26 +97,35 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
     @Override
     public List<CategoryEntity> getLevel1Categorys() {
+        long t1 = System.currentTimeMillis();
         List<CategoryEntity> categoryEntities = baseMapper.selectList(new QueryWrapper<CategoryEntity>().eq("parent_cid", 0));
+        long t2 = System.currentTimeMillis();
+        System.out.println("消耗时间: " + (t2-t1));
         return categoryEntities;
     }
 
     @Override
     public Map<String, List<Catalog2Vo>> getCatalogJson() {
 
+        /**
+         * 1.将数据库的多次查询变为一次
+         */
+        List<CategoryEntity> selectList = baseMapper.selectList(null);
+
         // 1.查出所有一级分类
-        List<CategoryEntity> level1Categorys = getLevel1Categorys();
+        List<CategoryEntity> level1Categorys = getParentCid(selectList, 0L);
 
         // 2.封装数据
         Map<String, List<Catalog2Vo>> parent_cid = level1Categorys.stream().collect(Collectors.toMap(k -> k.getCatId().toString(), v -> {
             // 拿到每一个一级分类 然后查询他们的二级分类
-            List<CategoryEntity> entities = baseMapper.selectList(new QueryWrapper<CategoryEntity>().eq("parent_cid", v.getCatId()));
+            List<CategoryEntity> entities = getParentCid(selectList, v.getCatId());
+            // 封装上面的结果
             List<Catalog2Vo> catelog2Vos = null;
             if (entities != null) {
                 catelog2Vos = entities.stream().map(l2 -> {
                     Catalog2Vo catelog2Vo = new Catalog2Vo(v.getCatId().toString(), null, l2.getCatId().toString(), l2.getName());
                     // 找当前二级分类的三级分类
-                    List<CategoryEntity> level3 = baseMapper.selectList(new QueryWrapper<CategoryEntity>().eq("parent_cid", l2.getCatId()));
+                    List<CategoryEntity> level3 = getParentCid(selectList, l2.getCatId());
                     // 三级分类有数据的情况下
                     if (level3 != null) {
                         List<Catalog2Vo.Catalog3Vo> catalog3Vos = level3.stream().map(l3 -> {
@@ -173,12 +182,14 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     /**
      * 从集合中找出parent_cid等于指定的id的菜单
      *
-     * @param categoryEntityList
+     * @param selectList
      * @param parent_cid
      * @return
      */
-    private List<CategoryEntity> getParentCid(List<CategoryEntity> categoryEntityList, Long parent_cid) {
-        return categoryEntityList.stream().filter(item -> item.getParentCid().equals(parent_cid)).collect(Collectors.toList());
+    private List<CategoryEntity> getParentCid(List<CategoryEntity> selectList, Long parent_cid) {
+        List<CategoryEntity> collect = selectList.stream().filter(item -> item.getParentCid() == parent_cid).collect(Collectors.toList());
+        return collect;
+        //return baseMapper.selectList(new QueryWrapper<CategoryEntity>().eq("parent_cid", v.getCatId()));
     }
 
 }
