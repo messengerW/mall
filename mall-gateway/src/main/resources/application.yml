@@ -99,7 +99,7 @@ spring:
           predicates:
             - Host=order.glmall.com
 
-        # 任何以mall.com结尾的域名转发到mall-product
+        # 任何以 echoone.cn 结尾的域名转发到mall-product
         - id: mall_route
           uri: lb://mall-product
           predicates:

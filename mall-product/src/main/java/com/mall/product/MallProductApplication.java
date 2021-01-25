@@ -3,6 +3,7 @@ package com.mall.product;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
@@ -51,6 +52,22 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  *   4. 实现热加载（修改页面不用重启服务就可以实时更新）
  *      1）引入 dev-tools
  *      2）修改完后，Build -> ReCompile (快捷键 ctrl+shift+F9)，再刷新页面
+ *
+ * 六、整合 Redis
+ * 	 1.引入 spring-boot-starter-data-redis
+ * 	 2.配置 application.yml 中 redis 相关配置（host、port）
+ * 	 3.使用 SpringBoot 自动配置好的 StringRedisTemplate 来操作 Redis
+ * 	   redis => map<key, value>
+ *
+ * 七、整合 redisson 作为分布式锁等功能框架
+ * 	 1.引入 redisson
+ * 	 2.config 目录下新增配置文件 MyRedissonConfig
+ * 	 3.参照官方文档使用
+ *
+ * 八、整合 SpringCache 简化缓存开发
+ * 	 1.引入 spring-boot-starter-cache
+ * 	 2.配置application.properties，使用 redis 作为缓存
+ * 	 3.在启动类中开启缓存功能（@EnableCaching）
  * */
 @EnableFeignClients(basePackages = "com.mall.product.feign")
 @MapperScan("com.mall.product.dao")
