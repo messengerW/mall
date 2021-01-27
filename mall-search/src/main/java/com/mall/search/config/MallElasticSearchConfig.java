@@ -34,7 +34,7 @@ public class MallElasticSearchConfig {
 	@Bean
 	public RestHighLevelClient esRestClient() {
 		RestHighLevelClient client = new RestHighLevelClient(
-				RestClient.builder(new HttpHost("121.89.204.40", 9200, "http")));
+				RestClient.builder(new HttpHost("echoone", 9200, "http")));
 		return client;
 	}
 }

@@ -1,6 +1,6 @@
 package com.mall.search.controller;
 
-import com.mall.search.service.MallService;
+import com.mall.search.service.MallSearchService;
 import com.mall.search.vo.SearchParam;
 import com.mall.search.vo.SearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 public class SearchController {
 
 	@Autowired
-	private MallService masllService;
+	private MallSearchService mallSearchService;
 
 	@GetMapping("/list.html")
 	public String listPage(SearchParam searchParam, Model model, HttpServletRequest request){
@@ -27,7 +27,7 @@ public class SearchController {
 		// 获取路径原生的查询属性
 		searchParam.set_queryString(request.getQueryString());
 		// ES中检索到的结果 传递给页面
-		SearchResult result = masllService.search(searchParam);
+		SearchResult result = mallSearchService.search(searchParam);
 		model.addAttribute("result", result);
 		return "list";
 	}

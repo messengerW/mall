@@ -328,10 +328,13 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
 
         // 5.发给ES进行保存  mall-search
         R r = searchFeignService.productStatusUp(collect);
+        System.out.println("code: " + r.getCode());
         if(r.getCode() == 0){
             // 远程调用成功
+            System.out.println("status: " + ProductConstant.ProductStatusEnum.SPU_UP.getCode());
             baseMapper.updateSpuStatus(spuId, ProductConstant.ProductStatusEnum.SPU_UP.getCode());
         }else{
+            log.error("商品上架远程调用失败");
             // 远程调用失败 TODO 接口幂等性 重试机制
             /**
              * Feign 的调用流程  Feign有自动重试机制

@@ -22,7 +22,7 @@
       <img src="/static/index/img/top_find_logo.png" alt="">
       <div class="input_find">
         <input type="text" placeholder="卸妆水" />
-        <span style="background: url(../static/index/img/img_12.png) 0 -1px;"></span>
+        <span style="background: url('../static/index/img/img_12.png') 0 -1px;"></span>
         <a href="#"><img src="/static/index/img/img_09.png" /></a>
       </div>
     </div>
@@ -115,7 +115,7 @@
         <input id="searchText" type="text" placeholder="" />
         <span style="background: url('../static/index/img/img_12.png') 0 -1px;"></span>
         <!--<button><i class="glyphicon"></i></button>-->
-        <a href="#" ><img src="/static/index/img/img_09.png" onclick="search()" /></a>
+        <a href="javascript:search()"><img src="/static/index/img/img_09.png" /></a>
       </div>
       <div class="header_ico">
         <div class="header_gw">
@@ -246,11 +246,11 @@
                 <p th:text="${(session.loginUser!=null)?session.loginUser.getNickname():'你好，请登录'}">
                   你好，请登录></p>
                 <p>
-                  <a href="http://auth.gulimall.com/login.html" th:if="${session.loginUser==null}">登录</a>
-                  <a href="http://auth.gulimall.com/register.html"
+                  <a href="http://auth.echoone.cn/login.html" th:if="${session.loginUser==null}">登录</a>
+                  <a href="http://auth.echoone.cn/register.html"
                      th:if="${session.loginUser==null}">注册</a>
 
-                  <a href="http://auth.gulimall.com/register.html" th:if="${session.loginUser!=null}">欢迎您的到来！</a>
+                  <a href="http://auth.echoone.cn/register.html" th:if="${session.loginUser!=null}">欢迎您的到来！</a>
                 </p>
               </div>
             </div>
@@ -613,7 +613,7 @@
 <script type="text/javascript">
   function search() {
       var keyword=$("#searchText").val()
-      window.location.href="http://search.gulimall.com/search.html?keyword="+keyword;
+      window.location.href="http://search.echoone.cn/list.html?keyword=" + keyword;
   }
 
 </script>

@@ -4,11 +4,11 @@ import com.mall.search.vo.SearchParam;
 import com.mall.search.vo.SearchResult;
 
 /**
- * <p>Title: MasllService</p>
+ * <p>Title: MallSearchService</p>
  * Description：
  * date：2020/6/12 23:05
  */
-public interface MallService {
+public interface MallSearchService {
 
 	/**
 	 * 检索所有参数

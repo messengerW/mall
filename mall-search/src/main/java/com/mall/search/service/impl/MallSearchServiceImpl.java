@@ -7,7 +7,7 @@ import com.mall.common.utils.R;
 import com.mall.search.config.MallElasticSearchConfig;
 import com.mall.search.constant.EsConstant;
 import com.mall.search.feign.ProductFeignService;
-import com.mall.search.service.MallService;
+import com.mall.search.service.MallSearchService;
 import com.mall.search.vo.AttrResponseVo;
 import com.mall.search.vo.BrandVo;
 import com.mall.search.vo.SearchParam;
@@ -46,13 +46,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * <p>Title: MallServiceImpl</p>
+ * <p>Title: MallSearchServiceImpl</p>
  * Description：
  * date：2020/6/12 23:06
  */
 @Slf4j
 @Service
-public class MallServiceImpl implements MallService {
+public class MallSearchServiceImpl implements MallSearchService {
 
 	@Resource
 	private RestHighLevelClient restHighLevelClient;

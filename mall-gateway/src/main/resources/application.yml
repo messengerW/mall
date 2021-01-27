@@ -72,38 +72,38 @@ spring:
         - id: search_route
           uri: lb://mall-search
           predicates:
-            - Host=search.glmall.com
+            - Host=search.echoone.cn
 
         - id: auth_route
           uri: lb://mall-auth-server
           predicates:
-            - Host=auth.glmall.com
+            - Host=auth.echoone.cn
 
         - id: seckill_route
           uri: lb://mall-seckill
           predicates:
-            - Host=seckill.glmall.com
+            - Host=seckill.echoone.cn
 
         - id: cart_route
           uri: lb://mall-cart
           predicates:
-            - Host=cart.glmall.com
+            - Host=cart.echoone.cn
 
         - id: member_route
           uri: lb://mall-member
           predicates:
-            - Host=member.glmall.com
+            - Host=member.echoone.cn
 
         - id: order_route
           uri: lb://mall-order
           predicates:
-            - Host=order.glmall.com
+            - Host=order.echoone.cn
 
         # 任何以 echoone.cn 结尾的域名转发到mall-product
         - id: mall_route
           uri: lb://mall-product
           predicates:
-            - Host=**.echoone.cn,echoone.cn
+            - Host=echoone.cn
 
 ##admin_route:
 # http://localhost:51000/api/captcha.jps => http://localhost:8080/web-admin/captcha.jpg
