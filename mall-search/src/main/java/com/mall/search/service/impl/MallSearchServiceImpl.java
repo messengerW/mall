@@ -60,6 +60,9 @@ public class MallSearchServiceImpl implements MallSearchService {
 	@Resource
 	private ProductFeignService productFeignService;
 
+	/**
+	 * 动态构建查询需要的DSL语句
+	*/
 	@Override
 	public SearchResult search(SearchParam Param) {
 
@@ -84,21 +87,21 @@ public class MallSearchServiceImpl implements MallSearchService {
 	private SearchRequest buildSearchRequest(SearchParam Param) {
 		// 帮我们构建DSL语句的
 		SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
-		// 1. 模糊匹配 过滤(按照属性、分类、品牌、价格区间、库存) 先构建一个布尔Query
-		// 1.1 must
+		// 1. 模糊匹配 过滤(按照属性、分类、品牌、价格区间、库存) 先构建一个 bool-query
 		BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
-		if(!StringUtils.isEmpty(Param.getKeyword())){
+		// 1.1 must - 模糊匹配
+		if(!StringUtils.isEmpty(Param.getKeyword())) {
 			boolQuery.must(QueryBuilders.matchQuery("skuTitle",Param.getKeyword()));
 		}
-		// 1.2 bool - filter Catalog3Id
-		if(StringUtils.isEmpty(Param.getCatalog3Id() != null)){
+		// 1.2 bool - filter - Catalog3Id - [三级分类id]
+		if(Param.getCatalog3Id() != null) {
 			boolQuery.filter(QueryBuilders.termQuery("catalogId", Param.getCatalog3Id()));
 		}
-		// 1.2 bool - brandId [集合]
+		// 1.2 bool - filter - brandId - [品牌id]
 		if(Param.getBrandId() != null && Param.getBrandId().size() > 0){
 			boolQuery.filter(QueryBuilders.termsQuery("brandId", Param.getBrandId()));
 		}
-		// 属性查询
+		// 1.2 bool - filter - attrs - [属性]
 		if(Param.getAttrs() != null && Param.getAttrs().size() > 0){
 
 			for (String attrStr : Param.getAttrs()) {
@@ -114,11 +117,11 @@ public class MallSearchServiceImpl implements MallSearchService {
 				boolQuery.filter(attrsQuery);
 			}
 		}
-		// 1.2 bool - filter [库存]
+		// 1.2 bool - filter - hasStock - [库存]
 		if(Param.getHasStock() != null){
 			boolQuery.filter(QueryBuilders.termQuery("hasStock",Param.getHasStock() == 1));
 		}
-		// 1.2 bool - filter [价格区间]
+		// 1.2 bool - filter - skuPrice - [价格区间]
 		if(!StringUtils.isEmpty(Param.getSkuPrice())){
 			RangeQueryBuilder rangeQuery = QueryBuilders.rangeQuery("skuPrice");
 			String[] s = Param.getSkuPrice().split("_");
@@ -148,9 +151,10 @@ public class MallSearchServiceImpl implements MallSearchService {
 			SortOrder order = s[1].equalsIgnoreCase("asc") ? SortOrder.ASC : SortOrder.DESC;
 			sourceBuilder.sort(s[0], order);
 		}
+
 		// 2.分页 pageSize ： 5
-		sourceBuilder.from((Param.getPageNum()-1) * EsConstant.PRODUCT_PASIZE);
-		sourceBuilder.size(EsConstant.PRODUCT_PASIZE);
+		sourceBuilder.from((Param.getPageNum()-1) * EsConstant.PRODUCT_PAGESIZE);
+		sourceBuilder.size(EsConstant.PRODUCT_PAGESIZE);
 
 		// 3.高亮
 		if(!StringUtils.isEmpty(Param.getKeyword())){
@@ -276,7 +280,7 @@ public class MallSearchServiceImpl implements MallSearchService {
 		result.setTotal(total);
 
 		// 总页码：计算得到
-		int totalPages = (int)(total / EsConstant.PRODUCT_PASIZE + 0.999999999999);
+		int totalPages = (int)(total / EsConstant.PRODUCT_PAGESIZE + 0.999999999999);
 		result.setTotalPages(totalPages);
 		// 设置导航页
 		ArrayList<Integer> pageNavs = new ArrayList<>();
