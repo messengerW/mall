@@ -42,6 +42,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -294,12 +295,13 @@ public class MallSearchServiceImpl implements MallSearchService {
 			List<SearchResult.NavVo> navVos = Param.getAttrs().stream().map(attr -> {
 				SearchResult.NavVo navVo = new SearchResult.NavVo();
 				String[] s = attr.split("_");
+				System.out.println(Arrays.toString(s));
 				navVo.setNavValue(s[1]);
 				R r = productFeignService.getAttrsInfo(Long.parseLong(s[0]));
 				// 将已选择的请求参数添加进去 前端页面进行排除
 				result.getAttrIds().add(Long.parseLong(s[0]));
 				if(r.getCode() == 0){
-					AttrResponseVo data = r.getData(new TypeReference<AttrResponseVo>(){});
+					AttrResponseVo data = r.getData("attr", new TypeReference<AttrResponseVo>(){});
 					navVo.setName(data.getAttrName());
 				}else{
 					// 失败了就拿id作为名字
@@ -307,7 +309,7 @@ public class MallSearchServiceImpl implements MallSearchService {
 				}
 				// 拿到所有查询条件 替换查询条件
 				String replace = replaceQueryString(Param, attr, "attrs");
-				navVo.setLink("http://search.glmall.com/list.html?" + replace);
+				navVo.setLink("http://search.echoone.cn/list.html?" + replace);
 				return navVo;
 			}).collect(Collectors.toList());
 			result.setNavs(navVos);
@@ -330,7 +332,7 @@ public class MallSearchServiceImpl implements MallSearchService {
 					replace = replaceQueryString(Param, brandVo.getBrandId() + "", "brandId");
 				}
 				navVo.setNavValue(buffer.toString());
-				navVo.setLink("http://search.glmall.com/list.html?" + replace);
+				navVo.setLink("http://search.echoone.cn/list.html?" + replace);
 			}
 			navs.add(navVo);
 		}
