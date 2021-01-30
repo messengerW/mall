@@ -56,7 +56,7 @@ public class BrandServiceImpl extends ServiceImpl<BrandDao, BrandEntity> impleme
 
     @Override
     public List<BrandEntity> getBrandByIds(List<Long> brandIds) {
-        return baseMapper.selectList(new QueryWrapper<BrandEntity>().in("brand_id",brandIds));
+        return baseMapper.selectList(new QueryWrapper<BrandEntity>().in("brand_id", brandIds));
     }
 
 }

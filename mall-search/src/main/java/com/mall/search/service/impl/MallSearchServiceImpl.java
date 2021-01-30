@@ -228,10 +228,13 @@ public class MallSearchServiceImpl implements MallSearchService {
 		for (Terms.Bucket bucket : attr_id.getBuckets()) {
 			SearchResult.AttrVo attrVo = new SearchResult.AttrVo();
 			// 2.1 得到属性的id
-			attrVo.setAttrId(bucket.getKeyAsNumber().longValue());
+			long attrId = bucket.getKeyAsNumber().longValue();
+			attrVo.setAttrId(attrId);
+
 			// 2.2 得到属性的名字
 			String attr_name = ((ParsedStringTerms) bucket.getAggregations().get("attr_name_agg")).getBuckets().get(0).getKeyAsString();
 			attrVo.setAttrName(attr_name);
+
 			// 2.3 得到属性的所有值
 			List<String> attr_value = ((ParsedStringTerms) bucket.getAggregations().get("attr_value_agg")).getBuckets().stream().map(item -> item.getKeyAsString()).collect(Collectors.toList());
 			attrVo.setAttrValue(attr_value);
@@ -291,27 +294,29 @@ public class MallSearchServiceImpl implements MallSearchService {
 		result.setPageNavs(pageNavs);
 
 		// 6.构建面包屑导航功能
-		if(Param.getAttrs() != null){
+		if ( Param.getAttrs() != null ) {
 			List<SearchResult.NavVo> navVos = Param.getAttrs().stream().map(attr -> {
 				SearchResult.NavVo navVo = new SearchResult.NavVo();
 				String[] s = attr.split("_");
-				System.out.println(Arrays.toString(s));
 				navVo.setNavValue(s[1]);
 				R r = productFeignService.getAttrsInfo(Long.parseLong(s[0]));
 				// 将已选择的请求参数添加进去 前端页面进行排除
 				result.getAttrIds().add(Long.parseLong(s[0]));
-				if(r.getCode() == 0){
+				if ( r.getCode() == 0 ) {
 					AttrResponseVo data = r.getData("attr", new TypeReference<AttrResponseVo>(){});
 					navVo.setName(data.getAttrName());
-				}else{
+				} else {
 					// 失败了就拿id作为名字
 					navVo.setName(s[0]);
 				}
 				// 拿到所有查询条件 替换查询条件
 				String replace = replaceQueryString(Param, attr, "attrs");
 				navVo.setLink("http://search.echoone.cn/list.html?" + replace);
+
 				return navVo;
+
 			}).collect(Collectors.toList());
+
 			result.setNavs(navVos);
 		}
 
@@ -322,13 +327,13 @@ public class MallSearchServiceImpl implements MallSearchService {
 			navVo.setName("品牌");
 			// TODO 远程查询所有品牌
 			R r = productFeignService.brandInfo(Param.getBrandId());
-			if(r.getCode() == 0){
+			if ( r.getCode() == 0 ) {
 				List<BrandVo> brand = r.getData("data", new TypeReference<List<BrandVo>>() {});
-				StringBuffer buffer = new StringBuffer();
+				StringBuilder buffer = new StringBuilder();
 				// 替换所有品牌ID
 				String replace = "";
 				for (BrandVo brandVo : brand) {
-					buffer.append(brandVo.getBrandName() + ";");
+					buffer.append(brandVo.getBrandName()).append(";");
 					replace = replaceQueryString(Param, brandVo.getBrandId() + "", "brandId");
 				}
 				navVo.setNavValue(buffer.toString());

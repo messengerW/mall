@@ -766,7 +766,7 @@
         </div>
         <!--  便利面包屑  -->
         <div class="JD_ipone_one c">
-            <a th:href="${nav.link}" th:each="nav : ${result.navs}"><span th:text="${nav.name}"></span><span th:text="${nav.navValue}"></span> × </a>
+            <a th:href="${nav.link}" th:each="nav : ${result.navs}"><span th:text="${nav.name}"></span>：<span th:text="${nav.navValue}"></span> × </a>
         </div>
         <i><img src="/static/search/image/right-@1x.png" alt=""></i>
     </div>
@@ -814,7 +814,7 @@
                         </a>
                     </div>
                 </div>
-
+                <!--分类-->
                 <div class="JD_pre">
                     <div class="sl_key">
                         <span><b>分类：</b></span>

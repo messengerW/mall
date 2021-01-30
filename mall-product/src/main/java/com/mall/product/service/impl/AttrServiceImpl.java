@@ -14,6 +14,7 @@ import com.mall.product.vo.AttrRespVO;
 import com.mall.product.vo.AttrVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -132,13 +133,12 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         return pageUtils;
     }
 
+    @Cacheable(value = "attr", key = "'attrinfo:'+#root.args[0]")
     @Override
     public AttrRespVO getAttrInfo(Long attrId) {
         AttrRespVO respVo = new AttrRespVO();
         AttrEntity attrEntity = this.getById(attrId);
         BeanUtils.copyProperties(attrEntity,respVo);
-
-
 
         if(attrEntity.getAttrType() == ProductConstant.AttrEnum.ATTR_TYPE_BASE.getCode()){
             //1、设置分组信息
