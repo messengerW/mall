@@ -69,10 +69,11 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * 	 2.配置application.properties，使用 redis 作为缓存
  * 	 3.在启动类中开启缓存功能（@EnableCaching）
  * */
+@EnableCaching
 @EnableFeignClients(basePackages = "com.mall.product.feign")
 @MapperScan("com.mall.product.dao")
 @EnableDiscoveryClient
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"java.util.concurrent"})
 public class MallProductApplication {
 
 	public static void main(String[] args) {

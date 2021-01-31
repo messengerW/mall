@@ -22,3 +22,19 @@ logging:
   level:
     com.mall.search: debug
     com.alibaba.nacos.client.naming: warn
+
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+
+#暴露所有端点,actuator 健康监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+#开启 feign 对 sentinel 的支持
+feign:
+  sentinel:
+    enabled: true

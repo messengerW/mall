@@ -12,25 +12,25 @@ spring:
     # 配置网关路由
     gateway:
       routes:
-#        - id: baidu_route
+#        - id: baidu-route
 #          uri: https://www.baidu.com
 #          predicates:
 #            - Query=url,baidu
 #
-#        - id: qq_route
+#        - id: qq-route
 #          uri: https://www.qq.com
 #          predicates:
 #            - Query=url,qq
 
         # product - 商品服务
-        - id: product_route
+        - id: product-route
           uri: lb://mall-product
           predicates:
             - Path=/api/product/**
           filters:
             - RewritePath=/api/(?<segment>.*),/$\{segment}
 
-        - id: coupon_route
+        - id: coupon-route
           uri: lb://mall-coupon
           predicates:
             - Path=/api/coupon/**
@@ -38,7 +38,7 @@ spring:
             - RewritePath=/api/(?<segment>.*), /$\{segment}
 
         # third - 第三方服务
-        - id: third_route
+        - id: third-route
           uri: lb://mall-third
           predicates:
             - Path=/api/third/**
@@ -46,7 +46,7 @@ spring:
              - RewritePath=/api/third/(?<segment>.*),/$\{segment}
 
         # member - 会员服务
-        - id: member_route
+        - id: member-route
           uri: lb://mall-member
           predicates:
             - Path=/api/member/**
@@ -54,7 +54,7 @@ spring:
             - RewritePath=/api/(?<segment>.*),/$\{segment}
 
         # ware - 金融服务
-        - id: ware_route
+        - id: ware-route
           uri: lb://mall-ware
           predicates:
             - Path=/api/ware/**
@@ -62,50 +62,57 @@ spring:
             - RewritePath=/api/(?<segment>.*),/$\{segment}
 
         # admin - 后台管理系统
-        - id: admin_route
+        - id: admin-route
           uri: lb://web-admin
           predicates:
             - Path=/api/**
           filters:
             - RewritePath=/api/(?<segment>.*),/web-admin/$\{segment}
 
-        - id: search_route
+
+        # 将主机地址为 search.echoone.cn 的请求转发至 mall-search
+        - id: search-host
           uri: lb://mall-search
           predicates:
             - Host=search.echoone.cn
 
-        - id: auth_route
+        # 将主机地址为 auth.echoone.cn 的请求转发至 mall-search
+        - id: auth-host
           uri: lb://mall-auth-server
           predicates:
             - Host=auth.echoone.cn
 
-        - id: seckill_route
+        # 将主机地址为 seckill.echoone.cn 的请求转发至 mall-seckill
+        - id: seckill-host
           uri: lb://mall-seckill
           predicates:
             - Host=seckill.echoone.cn
 
-        - id: cart_route
+        # 将主机地址为 cart.echoone.cn 的请求转发至 mall-cart
+        - id: cart-host
           uri: lb://mall-cart
           predicates:
             - Host=cart.echoone.cn
 
-        - id: member_route
+        # 将主机地址为 member.echoone.cn 的请求转发至 mall-member
+        - id: member-host
           uri: lb://mall-member
           predicates:
             - Host=member.echoone.cn
 
-        - id: order_route
+        # 将主机地址为 order.echoone.cn 的请求转发至 mall-order
+        - id: order-host
           uri: lb://mall-order
           predicates:
             - Host=order.echoone.cn
 
-        # 任何以 echoone.cn 结尾的域名转发到mall-product
-        - id: mall_route
+        # 将主机地址为 echoone.cn / item.echoone.cn 的请求转发至 mall-product
+        - id: product-host
           uri: lb://mall-product
           predicates:
-            - Host=echoone.cn
+            - Host=echoone.cn,item.echoone.cn
 
-##admin_route:
+##admin-route:
 # http://localhost:51000/api/captcha.jps => http://localhost:8080/web-admin/captcha.jpg
 
 logging:
