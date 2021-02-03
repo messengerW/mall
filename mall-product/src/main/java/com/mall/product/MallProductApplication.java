@@ -73,7 +73,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients(basePackages = "com.mall.product.feign")
 @MapperScan("com.mall.product.dao")
 @EnableDiscoveryClient
-@SpringBootApplication(scanBasePackages = {"java.util.concurrent"})
+@SpringBootApplication
 public class MallProductApplication {
 
 	public static void main(String[] args) {

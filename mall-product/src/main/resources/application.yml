@@ -40,12 +40,6 @@ ribbon:
   ReadTimeout: 30000
   ConnectTimeout: 30000
 
-mall:
-  thread:
-    core-pool-size: 20
-    maximum-pool-size: 200
-    keep-alive-time: 10
-
 #暴露所有端点,actuator 健康监控
 management:
   endpoints:

@@ -13,7 +13,7 @@ import org.springframework.session.web.http.DefaultCookieSerializer;
  * date：2020/6/26 21:44
  */
 @Configuration
-public class GlMallSessionConfig {
+public class MallSessionConfig {
 
 	@Bean
 	public CookieSerializer cookieSerializer(){
