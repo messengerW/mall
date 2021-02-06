@@ -76,9 +76,9 @@ spring:
           predicates:
             - Host=search.echoone.cn
 
-        # 将主机地址为 auth.echoone.cn 的请求转发至 mall-search
+        # 将主机地址为 auth.echoone.cn 的请求转发至 mall-auth
         - id: auth-host
-          uri: lb://mall-auth-server
+          uri: lb://mall-auth
           predicates:
             - Host=auth.echoone.cn
 
