@@ -2,7 +2,7 @@ package com.mall.search.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.mall.common.to.es.SkuEsModel;
-import com.mall.search.config.MallElasticSearchConfig;
+import com.mall.search.config.ElasticSearchConfig;
 import com.mall.search.constant.EsConstant;
 import com.mall.search.service.ProductSaveService;
 import lombok.extern.slf4j.Slf4j;
@@ -48,7 +48,7 @@ public class ProductSaveServiceImpl implements ProductSaveService {
 			indexRequest.source(jsonString, XContentType.JSON);
 			bulkRequest.add(indexRequest);
 		}
-		BulkResponse bulk = client.bulk(bulkRequest, MallElasticSearchConfig.COMMON_OPTIONS);
+		BulkResponse bulk = client.bulk(bulkRequest, ElasticSearchConfig.COMMON_OPTIONS);
 		// TODO 是否拥有错误
 		boolean hasFailures = bulk.hasFailures();
 		if(hasFailures){

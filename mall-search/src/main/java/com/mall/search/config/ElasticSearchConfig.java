@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * date：2020/6/8 14:50
  */
 @Configuration
-public class MallElasticSearchConfig {
+public class ElasticSearchConfig {
 
 	public static final RequestOptions COMMON_OPTIONS;
 

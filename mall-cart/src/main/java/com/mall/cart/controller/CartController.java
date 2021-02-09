@@ -90,7 +90,7 @@ public class CartController {
         cartService.addToCart(skuId, num);
         redirectAttributes.addAttribute("skuId", skuId);
         // 重定向到成功页面
-        return "redirect:http://cart.glmall.com/addToCartSuccess.html";
+        return "redirect:http://cart.echoone.cn/addToCartSuccess.html";
     }
 
     /**

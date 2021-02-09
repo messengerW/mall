@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.mall.common.to.es.SkuEsModel;
 import com.mall.common.utils.R;
-import com.mall.search.config.MallElasticSearchConfig;
+import com.mall.search.config.ElasticSearchConfig;
 import com.mall.search.constant.EsConstant;
 import com.mall.search.feign.ProductFeignService;
 import com.mall.search.service.MallSearchService;
@@ -42,7 +42,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -72,7 +71,7 @@ public class MallSearchServiceImpl implements MallSearchService {
 		SearchRequest searchRequest = buildSearchRequest(Param);
 		try {
 			// 2.执行检索请求
-			SearchResponse response = restHighLevelClient.search(searchRequest, MallElasticSearchConfig.COMMON_OPTIONS);
+			SearchResponse response = restHighLevelClient.search(searchRequest, ElasticSearchConfig.COMMON_OPTIONS);
 
 			// 3.分析响应数据
 			result = buildSearchResult(response, Param);

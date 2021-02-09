@@ -13,13 +13,13 @@ import org.springframework.session.web.http.DefaultCookieSerializer;
  * date：2020/7/4 22:57
  */
 @Configuration
-public class GlMallSessionConfig {
+public class SessionConfig {
 
 	@Bean
 	public CookieSerializer cookieSerializer(){
 		DefaultCookieSerializer cookieSerializer = new DefaultCookieSerializer();
 		// 明确的指定Cookie的作用域
-		cookieSerializer.setDomainName("glmall.com");
+		cookieSerializer.setDomainName("echoone.cn");
 		cookieSerializer.setCookieName("FIRESESSION");
 		return cookieSerializer;
 	}

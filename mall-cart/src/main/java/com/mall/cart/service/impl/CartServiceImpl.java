@@ -49,8 +49,9 @@ public class CartServiceImpl implements CartService {
     public CartItem addToCart(Long skuId, Integer num) throws ExecutionException, InterruptedException {
         BoundHashOperations<String, Object, Object> cartOps = getCartOps();
         String res = (String) cartOps.get(skuId.toString());
-        if(StringUtils.isEmpty(res)){
-            CartItem cartItem = new CartItem();
+        CartItem cartItem;
+        if( StringUtils.isEmpty(res) ){
+            cartItem = new CartItem();
             // 异步编排
             CompletableFuture<Void> getSkuInfo = CompletableFuture.runAsync(() -> {
                 // 1. 远程查询当前要添加的商品的信息
@@ -70,15 +71,17 @@ public class CartServiceImpl implements CartService {
                 List<String> values = productFeignService.getSkuSaleAttrValues(skuId);
                 cartItem.setSkuAttr(values);
             }, executor);
+
             CompletableFuture.allOf(getSkuInfo, getSkuSaleAttrValues).get();
-            cartOps.put(skuId.toString(), JSON.toJSONString(cartItem));
-            return cartItem;
-        }else{
-            CartItem cartItem = JSON.parseObject(res, CartItem.class);
+
+        } else {
+            cartItem = JSON.parseObject(res, CartItem.class);
             cartItem.setCount(cartItem.getCount() + num);
-            cartOps.put(skuId.toString(), JSON.toJSONString(cartItem));
-            return cartItem;
         }
+
+        cartOps.put(skuId.toString(), JSON.toJSONString(cartItem));
+        return cartItem;
+
     }
 
     @Override

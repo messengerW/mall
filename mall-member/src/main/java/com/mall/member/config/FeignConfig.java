@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * date：2020/7/4 23:50
  */
 @Configuration
-public class GlFeignConfig {
+public class FeignConfig {
 
 	@Bean("requestInterceptor")
 	public RequestInterceptor requestInterceptor(){

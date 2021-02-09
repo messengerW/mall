@@ -14,7 +14,7 @@ import java.util.Arrays;
  * date：2020/7/4 22:36
  */
 @Configuration
-public class MemberWebConfig implements WebMvcConfigurer {
+public class WebConfig implements WebMvcConfigurer {
 
 	@Autowired
 	private LoginUserInterceptor loginUserInterceptor;

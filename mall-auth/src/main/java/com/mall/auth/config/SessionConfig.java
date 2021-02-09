@@ -1,7 +1,7 @@
-package com.mall.cart.config;
+package com.mall.auth.config;
 /*
- * File: MallSessionConfig.java
- * Date: 2021-02-07 18:30
+ * File: SessionConfig.java
+ * Date: 2021-02-09 16:07
  * Author: msw
  * PS ...
  */
@@ -14,7 +14,7 @@ import org.springframework.session.web.http.CookieSerializer;
 import org.springframework.session.web.http.DefaultCookieSerializer;
 
 @Configuration
-public class MallSessionConfig {
+public class SessionConfig {
 
     @Bean
     public CookieSerializer cookieSerializer(){
