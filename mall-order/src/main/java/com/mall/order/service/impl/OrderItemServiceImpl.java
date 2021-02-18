@@ -1,6 +1,13 @@
 package com.mall.order.service.impl;
 
+import com.mall.order.entity.OrderEntity;
+import com.rabbitmq.client.Channel;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -13,6 +20,7 @@ import com.mall.order.entity.OrderItemEntity;
 import com.mall.order.service.OrderItemService;
 
 
+@RabbitListener(queues = {"hello-java-queue"})
 @Service("orderItemService")
 public class OrderItemServiceImpl extends ServiceImpl<OrderItemDao, OrderItemEntity> implements OrderItemService {
 
@@ -26,4 +34,43 @@ public class OrderItemServiceImpl extends ServiceImpl<OrderItemDao, OrderItemEnt
         return new PageUtils(page);
     }
 
+    /**
+     * queues: 声明需要监听的所有消息队列
+     */
+    @RabbitHandler
+    public void receiveMessageA(Message message, OrderEntity orderEntity, Channel channel){
+        System.out.println("接受到消息: " + message + "\n内容：" + orderEntity);
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) { }
+        // 这个是一个数字 通道内自增
+        long deliveryTag = message.getMessageProperties().getDeliveryTag();
+        try {
+            // 只签收当前货物 不批量签收
+            channel.basicAck(deliveryTag, false);
+
+            // deliveryTag: 货物的标签  	multiple: 是否批量拒收 requeue: 是否重新入队
+//			channel.basicNack(deliveryTag, false,true);
+//			批量拒绝
+//			channel.basicReject();
+        } catch (IOException e) {
+            System.out.println("网络中断");
+        }
+        System.out.println(orderEntity.getReceiverName() + " 消息处理完成");
+    }
+
+    @RabbitHandler
+    public void receiveMessageB(Message message, OrderItemEntity orderEntity, Channel channel){
+        System.out.println("接受到消息: " + message + "\n内容：" + orderEntity);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) { }
+        long deliveryTag = message.getMessageProperties().getDeliveryTag();
+        try {
+            channel.basicAck(deliveryTag, false);
+        } catch (IOException e) {
+            System.out.println("网络中断");
+        }
+        System.out.println(orderEntity.getOrderSn() + " 消息处理完成");
+    }
 }
