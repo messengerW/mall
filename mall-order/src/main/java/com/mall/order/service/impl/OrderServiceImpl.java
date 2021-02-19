@@ -41,10 +41,11 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
     @Override
     public PageUtils queryPageWithItem(Map<String, Object> params) {
         MemberRsepVo rsepVo = LoginUserInterceptor.threadLocal.get();
+        System.out.println("===> rsepVo: " + rsepVo);
         IPage<OrderEntity> page = this.page(
                 new Query<OrderEntity>().getPage(params),
                 // 查询这个用户的最新订单 [降序排序]
-                new QueryWrapper<OrderEntity>().eq("member_id",rsepVo.getId()).orderByDesc("id")
+                new QueryWrapper<OrderEntity>().eq("member_id",rsepVo==null?5:rsepVo.getId()).orderByDesc("id")
         );
         List<OrderEntity> order_sn = page.getRecords().stream().map(order -> {
             // 查询这个订单关联的所有订单项

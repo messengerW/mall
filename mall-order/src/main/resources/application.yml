@@ -2,6 +2,9 @@ server:
   port: 53000
 
 spring:
+  application:
+    name: mall-order
+
   datasource:
     username: root
     password: 232624
@@ -12,8 +15,28 @@ spring:
     nacos:
       discovery:
         server-addr: echoone:8848
-  application:
-    name: mall-order
+
+  thymeleaf:
+    cache: false
+
+  rabbitmq:
+    host: echoone
+    port: 5672
+    virtual-host: /
+    publisher-confirms: true
+    publisher-returns: true
+    template:
+      mandatory: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+
+  session:
+    store-type: redis
+
+  redis:
+    host: echoone
+    port: 6379
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
@@ -25,3 +48,7 @@ logging:
   level:
     com.mall.order: debug
     com.alibaba.nacos.client.naming: warn
+
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000

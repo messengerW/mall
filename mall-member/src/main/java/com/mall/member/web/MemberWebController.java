@@ -30,7 +30,7 @@ public class MemberWebController {
 		R r = orderFeignService.listWithItem(page);
 		model.addAttribute("orders", r);
 //		支付宝返回的页面数据
-//		System.out.println(r.get("page"));
+		System.out.println(r.get("page"));
 		return "orderList";
 	}
 }

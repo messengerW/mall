@@ -1,7 +1,7 @@
-package com.mall.cart.config;
+package com.mall.product.config;
 /*
  * File: SessionConfig.java
- * Date: 2021-02-07 18:30
+ * Date: 2021-02-19 17:54
  * Author: msw
  * PS ...
  */

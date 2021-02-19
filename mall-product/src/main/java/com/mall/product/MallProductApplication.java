@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
  * 一、整合 MyBatis-plus
@@ -69,6 +70,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * 	 2.配置application.properties，使用 redis 作为缓存
  * 	 3.在启动类中开启缓存功能（@EnableCaching）
  * */
+
+@EnableRedisHttpSession
 @EnableCaching
 @EnableFeignClients(basePackages = "com.mall.product.feign")
 @MapperScan("com.mall.product.dao")
