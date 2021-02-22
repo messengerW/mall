@@ -27,15 +27,18 @@ public class LoginUserInterceptor implements HandlerInterceptor {
         String uri = request.getRequestURI();
         // 这个请求直接放行
         boolean match = new AntPathMatcher().match("/order/order/status/**", uri);
-        if(match){
+        if(match) {
             return true;
         }
+        // 获取 session
         HttpSession session = request.getSession();
+
         MemberRsepVo memberRsepVo = (MemberRsepVo) session.getAttribute(AuthServerConstant.LOGIN_USER);
-        if(memberRsepVo != null){
+
+        if(memberRsepVo != null) {
             threadLocal.set(memberRsepVo);
             return true;
-        }else{
+        } else {
             // 没登陆就去登录
             session.setAttribute("msg", AuthServerConstant.NOT_LOGIN);
             response.sendRedirect("http://auth.echoone.cn/login.html");

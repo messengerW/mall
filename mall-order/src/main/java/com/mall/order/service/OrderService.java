@@ -3,9 +3,11 @@ package com.mall.order.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.common.utils.PageUtils;
 import com.mall.order.entity.OrderEntity;
+import com.mall.order.vo.OrderConfirmVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * 订单
@@ -21,5 +23,10 @@ public interface OrderService extends IService<OrderEntity> {
     PageUtils queryPageWithItem(@Param("params") Map<String, Object> params);
 
     OrderEntity getOrderByOrderSn(String orderSn);
+
+    /**
+     * 给订单确认页返回需要的数据
+     */
+    OrderConfirmVo confirmOrder() throws ExecutionException, InterruptedException;
 }
 
