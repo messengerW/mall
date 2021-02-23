@@ -18,6 +18,11 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
 
+  rabbitmq:
+    host: echoone
+    port: 5672
+    virtual-host: /
+
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
   global-config:
@@ -28,3 +33,13 @@ logging:
   level:
     com.mall.ware: debug
     com.alibaba.nacos.client.naming: warn
+
+myRabbitmq:
+  MQConfig:
+    queues: stock.release.stock.queue
+    delayQueue: stock.delay.queue
+    eventExchange: stock-event-exchange
+    routingKey: stock.locked
+    letterRoutingKey: stock.release
+    # 库存自动过期时间 单位:(毫秒)
+    ttl: 900000

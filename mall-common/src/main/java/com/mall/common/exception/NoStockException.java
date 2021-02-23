@@ -15,11 +15,7 @@ public class NoStockException extends RuntimeException{
     @Setter @Getter
     private Long skuId;
 
-    public NoStockException(Long skuId) {
-        super("商品id:"+skuId+";库存不足");
-    }
-
-    public NoStockException(String message) {
-        super(message);
+    public NoStockException(String msg) {
+        super(msg + "号商品没有足够的库存了");
     }
 }

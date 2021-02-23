@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.common.utils.PageUtils;
 import com.mall.order.entity.OrderEntity;
 import com.mall.order.vo.OrderConfirmVo;
+import com.mall.order.vo.OrderSubmitVo;
+import com.mall.order.vo.SubmitOrderResponseVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Map;
@@ -28,5 +30,7 @@ public interface OrderService extends IService<OrderEntity> {
      * 给订单确认页返回需要的数据
      */
     OrderConfirmVo confirmOrder() throws ExecutionException, InterruptedException;
+
+    SubmitOrderResponseVo submitOrder(OrderSubmitVo submitVo);
 }
 

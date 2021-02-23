@@ -16,5 +16,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface ProductFeignService {
 
     @GetMapping("/product/spuinfo/skuId/{id}")
-    R getSkuInfoBySkuId(@PathVariable("id") Long skuId);
+    R getSpuInfoBySkuId(@PathVariable("id") Long skuId);
 }

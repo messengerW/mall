@@ -32,6 +32,18 @@ import com.mall.common.utils.R;
 public class WareSkuController {
     @Autowired
     private WareSkuService wareSkuService;
+
+    @PostMapping("/lock/order")
+    public R orderLockStock(@RequestBody WareSkuLockVo vo){
+        try {
+            wareSkuService.orderLockStock(vo);
+            return R.ok();
+        } catch (NoStockException e) {
+            log.warn("\n" + e.getMessage());
+        }
+        return R.error(BusinessCodeEnum.NOT_STOCK_EXCEPTION.getCode(), BusinessCodeEnum.NOT_STOCK_EXCEPTION.getMsg());
+    }
+
     /**
      * 查询sku是否有库存
      * 返回当前id stock量
