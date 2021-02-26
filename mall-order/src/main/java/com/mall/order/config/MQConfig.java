@@ -101,17 +101,17 @@ public class MQConfig {
     /**
      * 订单释放直接和库存释放进行绑定
      */
-//    @Bean
-//    public Binding orderReleaseOtherBinding(){
-//
-//        return new Binding(
-//                ReleaseOther,
-//                Binding.DestinationType.QUEUE,
-//                eventExchange,
-//                ReleaseOtherKey + ".#",
-//                null);
-//    }
-//
+    @Bean
+    public Binding orderReleaseOtherBinding(){
+
+        return new Binding(
+                ReleaseOther,
+                Binding.DestinationType.QUEUE,
+                eventExchange,
+                ReleaseOtherKey + ".#",
+                null);
+    }
+
 //    @Bean
 //    public Queue orderSecKillQueue(){
 //        return new Queue(

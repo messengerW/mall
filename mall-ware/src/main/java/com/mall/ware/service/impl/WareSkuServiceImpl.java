@@ -1,5 +1,7 @@
 package com.mall.ware.service.impl;
 
+import com.alibaba.fastjson.TypeReference;
+import com.mall.common.enume.OrderStatusEnum;
 import com.mall.common.exception.NoStockException;
 import com.mall.common.to.es.SkuHasStockVo;
 import com.mall.common.to.mq.OrderTo;
@@ -8,10 +10,12 @@ import com.mall.common.to.mq.StockLockedTo;
 import com.mall.common.utils.R;
 import com.mall.ware.entity.WareOrderTaskDetailEntity;
 import com.mall.ware.entity.WareOrderTaskEntity;
+import com.mall.ware.feign.OrderFeignService;
 import com.mall.ware.feign.ProductFeignService;
 import com.mall.ware.service.WareOrderTaskDetailService;
 import com.mall.ware.service.WareOrderTaskService;
 import com.mall.ware.vo.OrderItemVo;
+import com.mall.ware.vo.OrderVo;
 import com.mall.ware.vo.WareSkuLockVo;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -46,6 +50,9 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
 
     @Autowired
     ProductFeignService productFeignService;
+
+    @Autowired
+    OrderFeignService orderFeignService;
 
     @Autowired
     private WareOrderTaskService orderTaskService;
@@ -171,18 +178,23 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
             for (Long wareId : wareIds) {
                 // 成功就返回 1 失败返回0
                 Long count = wareSkuDao.lockSkuStock(skuId, wareId, hasStock.getNum());
-                if(count == 1){
+
+                if ( count == 1 ) {
                     // TODO 告诉MQ库存锁定成功 一个订单锁定成功 消息队列就会有一个消息
                     WareOrderTaskDetailEntity detailEntity = new WareOrderTaskDetailEntity(null,skuId,"",hasStock.getNum() ,taskEntity.getId(),wareId,1);
                     orderTaskDetailService.save(detailEntity);
+
                     StockLockedTo stockLockedTo = new StockLockedTo();
                     stockLockedTo.setId(taskEntity.getId());
+
                     StockDetailTo detailTo = new StockDetailTo();
+                    // 属性copy
                     BeanUtils.copyProperties(detailEntity, detailTo);
                     // 防止回滚以后找不到数据 把详细信息页
                     stockLockedTo.setDetailTo(detailTo);
 
                     rabbitTemplate.convertAndSend(eventExchange, routingKey ,stockLockedTo);
+
                     skuStocked = false;
                     break;
                 }
@@ -222,9 +234,55 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
         WareOrderTaskEntity taskEntity = orderTaskService.getOrderTaskByOrderSn(orderSn);
         Long taskEntityId = taskEntity.getId();
         // 按照工作单找到所有 没有解锁的库存 进行解锁 状态为1等于已锁定
-        List<WareOrderTaskDetailEntity> entities = orderTaskDetailService.list(new QueryWrapper<WareOrderTaskDetailEntity>().eq("task_id", taskEntityId).eq("lock_status", 1));
+        List<WareOrderTaskDetailEntity> entities = orderTaskDetailService.list(
+                new QueryWrapper<WareOrderTaskDetailEntity>().
+                        eq("task_id", taskEntityId).
+                        eq("lock_status", 1));
         for (WareOrderTaskDetailEntity entity : entities) {
             unLock(entity.getSkuId(), entity.getWareId(), entity.getSkuNum(), entity.getId());
+        }
+    }
+
+    @Override
+    public void unlockStock(StockLockedTo to) {
+        log.info("\n收到解锁库存的消息");
+        // 库存id
+        Long id = to.getId();
+        StockDetailTo detailTo = to.getDetailTo();
+        Long detailId = detailTo.getId();
+        /**
+         * 解锁库存
+         * 	查询数据库关系这个订单的详情
+         * 		有: 证明库存锁定成功
+         * 			1.没有这个订单, 必须解锁
+         * 			2.有这个订单 不是解锁库存
+         * 				订单状态：已取消,解锁库存
+         * 				没取消：不能解锁	;
+         * 		没有：就是库存锁定失败， 库存回滚了 这种情况无需回滚
+         */
+        WareOrderTaskDetailEntity byId = orderTaskDetailService.getById(detailId);
+        if(byId != null){
+            // 解锁
+            WareOrderTaskEntity taskEntity = orderTaskService.getById(id);
+            String orderSn = taskEntity.getOrderSn();
+            // 根据订单号 查询订单状态 已取消才解锁库存
+            R orderStatus = orderFeignService.getOrderStatus(orderSn);
+            if(orderStatus.getCode() == 0){
+                // 订单数据返回成功
+                OrderVo orderVo = orderStatus.getData(new TypeReference<OrderVo>() {});
+                // 订单不存在
+                if(orderVo == null || orderVo.getStatus() == OrderStatusEnum.CANCLED.getCode()){
+                    // 订单已取消 状态1 已锁定  这样才可以解锁
+                    if(byId.getLockStatus() == 1){
+                        unLock(detailTo.getSkuId(), detailTo.getWareId(), detailTo.getSkuNum(), detailId);
+                    }
+                }
+            }else{
+                // 消息拒绝 重新放回队列 让别人继续消费解锁
+                throw new RuntimeException("远程服务失败");
+            }
+        }else{
+            // 无需解锁
         }
     }
 

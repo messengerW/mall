@@ -4,6 +4,7 @@ import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.mall.common.enume.OrderStatusEnum;
 import com.mall.common.exception.NoStockException;
+import com.mall.common.to.mq.OrderTo;
 import com.mall.common.utils.R;
 import com.mall.common.vo.MemberRsepVo;
 import com.mall.order.constant.OrderConstant;
@@ -17,7 +18,10 @@ import com.mall.order.service.OrderItemService;
 import com.mall.order.to.OrderCreateTo;
 import com.mall.order.vo.*;
 import io.seata.spring.annotation.GlobalTransactional;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -46,7 +50,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
-
+@Slf4j
 @Service("orderService")
 public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> implements OrderService {
 
@@ -98,7 +102,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
     @Override
     public PageUtils queryPageWithItem(Map<String, Object> params) {
         MemberRsepVo rsepVo = LoginUserInterceptor.threadLocal.get();
-        System.out.println("===> rsepVo: " + rsepVo);
+
         IPage<OrderEntity> page = this.page(
                 new Query<OrderEntity>().getPage(params),
                 // 查询这个用户的最新订单 [降序排序]
@@ -242,6 +246,33 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
             }
         }
         return submitVo;
+    }
+
+    @Override
+    public void closeOrder(OrderEntity entity) {
+        log.info("\n收到过期的订单信息--准关闭订单:" + entity.getOrderSn());
+        // 查询这个订单的最新状态
+        OrderEntity orderEntity = this.getById(entity.getId());
+
+        if(orderEntity.getStatus() == OrderStatusEnum.CREATE_NEW.getCode()){
+            OrderEntity update = new OrderEntity();
+
+            update.setId(entity.getId());
+            update.setStatus(OrderStatusEnum.CANCLED.getCode());
+            this.updateById(update);
+
+            // 发送给MQ告诉它有一个订单被自动关闭了
+            OrderTo orderTo = new OrderTo();
+            BeanUtils.copyProperties(orderEntity, orderTo);
+
+            try {
+                // 保证消息 100% 发出去 每一个消息在数据库保存详细信息
+                // 定期扫描数据库 将失败的消息在发送一遍
+                rabbitTemplate.convertAndSend(eventExchange, ReleaseOtherKey , orderTo);
+            } catch (AmqpException e) {
+                // 将没发送成功的消息进行重试发送.
+            }
+        }
     }
 
     /**

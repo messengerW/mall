@@ -34,5 +34,7 @@ public interface WareSkuService extends IService<WareSkuEntity> {
      * 由于订单超时而自动释放订单之后来解锁库存
      */
     void unlockStock(OrderTo to);
+
+    void unlockStock(StockLockedTo to);
 }
 
