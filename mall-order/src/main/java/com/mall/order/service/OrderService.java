@@ -3,9 +3,7 @@ package com.mall.order.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mall.common.utils.PageUtils;
 import com.mall.order.entity.OrderEntity;
-import com.mall.order.vo.OrderConfirmVo;
-import com.mall.order.vo.OrderSubmitVo;
-import com.mall.order.vo.SubmitOrderResponseVo;
+import com.mall.order.vo.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Map;
@@ -34,5 +32,9 @@ public interface OrderService extends IService<OrderEntity> {
     SubmitOrderResponseVo submitOrder(OrderSubmitVo submitVo);
 
     void closeOrder(OrderEntity entity);
+
+    PayVo getOrderPay(String orderSn);
+
+    String handlePayResult(PayAsyncVo vo);
 }
 
