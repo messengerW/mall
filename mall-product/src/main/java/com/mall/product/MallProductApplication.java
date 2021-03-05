@@ -74,7 +74,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @EnableRedisHttpSession
 @EnableCaching
 @EnableFeignClients(basePackages = "com.mall.product.feign")
-@MapperScan("com.mall.product.dao")
+//@MapperScan("com.mall.product.dao")
 @EnableDiscoveryClient
 @SpringBootApplication
 public class MallProductApplication {

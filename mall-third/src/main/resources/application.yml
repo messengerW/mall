@@ -1,8 +1,15 @@
+server:
+  port: 43000
+
 spring:
+  application:
+    name: mall-third
+
   cloud:
     nacos:
       discovery:
         server-addr: echoone:8848
+
     alicloud:
       access-key: LTAI4G6MJHukz2549aDCMy1J
       secret-key: bThPe7wGCoeRVnCKCRDR7sqpibt1n4
@@ -16,13 +23,14 @@ spring:
         templateId: f5e68c3ad6b6474faa8cd178b21d3377
         appCode: cdca144fd2274ac3856017d67478eb88
 
-  application:
-    name: mall-third
-
-server:
-  port: 43000
-
 logging:
   level:
     com.mall.third: debug
     com.alibaba.nacos.client.naming: warn
+
+#暴露所有端点,actuator 健康监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

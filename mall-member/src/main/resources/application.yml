@@ -2,6 +2,9 @@ server:
   port: 52000
 
 spring:
+  application:
+    name: mall-member
+
   datasource:
     username: root
     password: 232624
@@ -12,15 +15,27 @@ spring:
     nacos:
       discovery:
         server-addr: echoone:8848
-  application:
-    name: mall-member
+
   thymeleaf:
     cache: false
+
   session:
     store-type: redis
+
   redis:
     host: echoone
     port: 6379
+
+  zipkin:
+    base-url: http://echoone:9411/
+    discovery-client-enabled: false
+    sender:
+      type: web
+
+  sleuth:
+    sampler:
+      probability: 1
+
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
   mvc:
@@ -40,3 +55,10 @@ logging:
 ribbon:
   ReadTimeout: 30000
   ConnectTimeout: 30000
+
+#暴露所有端点,actuator 健康监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

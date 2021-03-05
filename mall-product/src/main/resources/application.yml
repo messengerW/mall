@@ -2,6 +2,9 @@ server:
   port: 54000
 
 spring:
+  application:
+    name: mall-product
+
   datasource:
     username: root
     password: 232624
@@ -12,15 +15,37 @@ spring:
     nacos:
       discovery:
         server-addr: echoone:8848
-  application:
-    name: mall-product
+
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+
   thymeleaf:
     cache: false
+
+  session:
+    store-type: redis
+
   redis:
     host: echoone
     port: 6379
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3600000
+      use-key-prefix: false
+      #key-prefix: CACHE_
+      cache-null-values: true
+
+  zipkin:
+    base-url: http://echoone:9411/
+    discovery-client-enabled: false
+    sender:
+      type: web
+
+  sleuth:
+    sampler:
+      probability: 1
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
@@ -35,6 +60,8 @@ logging:
   level:
     com.mall.product: debug
     com.alibaba.nacos.client.naming: warn
+#    org.springframework.cloud.openfeign: debug
+#    org.springframework.cloud.sleuth: debug
 
 ribbon:
   ReadTimeout: 30000
@@ -51,3 +78,9 @@ management:
 feign:
   sentinel:
     enabled: true
+
+mall:
+  thread:
+    core-size: 20
+    max-size: 200
+    keep-alive-time: 10

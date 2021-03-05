@@ -2,6 +2,9 @@ server:
   port: 50000
 
 spring:
+  application:
+    name: mall-coupon
+
   datasource:
     username: root
     password: 232624
@@ -12,8 +15,16 @@ spring:
     nacos:
       discovery:
         server-addr: echoone:8848
-  application:
-    name: mall-coupon
+
+  zipkin:
+    base-url: http://echoone:9411/
+    discovery-client-enabled: false
+    sender:
+      type: web
+
+  sleuth:
+    sampler:
+      probability: 1
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml

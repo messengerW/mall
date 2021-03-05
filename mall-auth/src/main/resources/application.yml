@@ -1,17 +1,14 @@
 server:
-  port: 44000
+  port: 42000
 
 spring:
   application:
-    name: mall-search
+    name: mall-auth
 
   cloud:
     nacos:
       discovery:
         server-addr: echoone:8848
-    sentinel:
-      transport:
-        dashboard: echoone:8333
 
   thymeleaf:
     cache: false
@@ -25,12 +22,7 @@ spring:
 
   devtools:
     livereload:
-      port: 35733
-
-logging:
-  level:
-    com.mall.search: debug
-    com.alibaba.nacos.client.naming: warn
+      port: 35731
 
 ribbon:
   ReadTimeout: 30000
@@ -42,8 +34,3 @@ management:
     web:
       exposure:
         include: '*'
-
-#开启 feign 对 sentinel 的支持
-feign:
-  sentinel:
-    enabled: true

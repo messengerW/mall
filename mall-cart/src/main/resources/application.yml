@@ -1,0 +1,48 @@
+server:
+  port: 46000
+
+spring:
+  application:
+    name: mall-cart
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: echoone:8848
+
+  thymeleaf:
+    cache: false
+
+  session:
+    store-type: redis
+
+  redis:
+    host: echoone
+    port: 6379
+
+  zipkin:
+    base-url: http://echoone:9411/
+    discovery-client-enabled: false
+    sender:
+      type: web
+
+  sleuth:
+    sampler:
+      probability: 1
+
+  devtools:
+    livereload:
+      port: 35732
+
+#暴露所有端点,actuator 健康监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+mall:
+  thread:
+    core-size: 20
+    max-size: 200
+    keep-alive-time: 10
