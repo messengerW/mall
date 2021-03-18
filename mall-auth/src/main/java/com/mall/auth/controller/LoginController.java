@@ -46,6 +46,12 @@ public class LoginController {
 
     @Autowired
     StringRedisTemplate stringRedisTemplate;
+
+    /**
+     * 点击登录按钮时的原始地址
+     */
+    public static String currentOriginUrl = null;
+
     /**
      * 发送一个请求直接跳转到页面：SpringMVC ViewController 将请求和页面映射过来
      *
@@ -132,6 +138,22 @@ public class LoginController {
         }
     }
 
+    @GetMapping("/login.html")
+    public String loginPage(HttpSession session, @RequestParam(value = "originUrl", required = false) String originUrl) {
+        currentOriginUrl = null;
+        Object attribute = session.getAttribute(AuthServerConstant.LOGIN_USER);
+        if (attribute == null) {
+            //没有登录过
+            if (!StringUtils.isEmpty(originUrl)) {
+                currentOriginUrl = originUrl;
+            }
+            return "login";
+        } else {
+            //登录过跳转首页
+            return "redirect:http://echoone.cn";
+        }
+    }
+
     @PostMapping("/login")
     public String login(UserLoginVo userLoginVo, RedirectAttributes redirectAttributes, HttpSession session){
         // 远程登录
@@ -141,7 +163,13 @@ public class LoginController {
             MemberRsepVo rsepVo = r.getData("data", new TypeReference<MemberRsepVo>() {});
             session.setAttribute(AuthServerConstant.LOGIN_USER, rsepVo);
             log.info("\n欢迎 [" + rsepVo.getUsername() + "] 登录");
-            return "redirect:http://echoone.cn";
+            if (StringUtils.isEmpty(currentOriginUrl)) {
+                //默认跳转首页
+                return "redirect:http://echoone.cn";
+            } else {
+                //如果传了原始网址就跳回原始网址
+                return "redirect:" + currentOriginUrl;
+            }
         }else {
             HashMap<String, String> error = new HashMap<>();
             // 获取错误信息
@@ -149,6 +177,21 @@ public class LoginController {
             redirectAttributes.addFlashAttribute("errors", error);
             return "redirect:http://auth.echoone.cn/login.html";
         }
+    }
+
+    /**
+     * 退出登录
+     *
+     * @param session session
+     * @return 返回当前页
+     */
+    @GetMapping("/oauth2.0/logout")
+    public String logout(HttpSession session) {
+        if (session.getAttribute(AuthServerConstant.LOGIN_USER) != null) {
+            log.info("\n[" + ((MemberRsepVo) session.getAttribute(AuthServerConstant.LOGIN_USER)).getUsername() + "] 已下线");
+        }
+        session.invalidate();
+        return "redirect:http://auth.echoone.cn/login.html";
     }
 
 }

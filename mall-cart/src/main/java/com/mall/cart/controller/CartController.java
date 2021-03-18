@@ -38,6 +38,15 @@ public class CartController {
         return cartService.getUserCartItems();
     }
 
+    /**
+     * 买家账号 qgjtln6284@sandbox.com
+     * 登录密码 111111
+     * 支付密码 111111
+     * 用户名称 qgjtln6284
+     * 证件类型身份证 (IDENTITY_CARD)
+     * 证件号码 898104196705118414
+     * 账户余额 100000.00
+    * */
     @ResponseBody
     @GetMapping("toTrade")
     public String toTrade() throws ExecutionException, InterruptedException {

@@ -34,6 +34,11 @@ spring:
     livereload:
       port: 35732
 
+logging:
+  level:
+    com.mall.third: debug
+    com.alibaba.nacos.client.naming: warn
+
 #暴露所有端点,actuator 健康监控
 management:
   endpoints:
