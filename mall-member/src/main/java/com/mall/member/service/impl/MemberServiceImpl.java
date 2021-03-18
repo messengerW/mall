@@ -66,14 +66,14 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         entity.setPassword(bCryptPasswordEncoder.encode(userRegisterVo.getPassword()));
         // 其他的默认信息
-        entity.setCity("湖南 长沙");
+        entity.setCity("浙江 杭州");
         entity.setCreateTime(new Date());
         entity.setStatus(0);
         entity.setNickname(userRegisterVo.getUserName());
         entity.setBirth(new Date());
-        entity.setEmail("xxx@gmail.com");
+        entity.setEmail("123456@qq.com");
         entity.setGender(1);
-        entity.setJob("JAVA");
+        entity.setJob("Student");
         baseMapper.insert(entity);
     }
 
